@@ -10,7 +10,7 @@ const receptionHome = () => {
 
                 <div className="details__container">
                     <br/>
-                    <img src="./images/1.png" alt="" width="200px" height="200px"/><br/><br/>
+                    <img src={require("./images/1.png")} alt="" width="200px" height="200px"/><br/><br/>
                     <p>Anuka Fonseka</p>
                     <p>19517</p>
                 </div>
