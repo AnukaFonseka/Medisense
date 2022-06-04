@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import {useDispatch} from 'react-redux';
 import { login } from '../../Features/user'
-import './Login.css'
+import './login.css'
 
 const Login = () => {
 
@@ -29,16 +29,16 @@ const Login = () => {
              type="text"
              placeholder='Username'
              value={username}
-             onChange={(e)=> setUsername(e.target.value)}   
+             onChange={(e)=> setUsername(e.target.value)}
             />
             <input
              type="password"
              placeholder='Password'
              value={password}
-             onChange={(e)=> setPassword(e.target.value)}  
+             onChange={(e)=> setPassword(e.target.value)}
             />
 
-            {/* <button type='submit' className='login__btn' 
+            {/* <button type='submit' className='login__btn'
                 onClick={(e) => {
                     e.preventDefault()
                     dispatch(login({username: "pedro", password: "pass"}))
