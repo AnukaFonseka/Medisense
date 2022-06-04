@@ -18,7 +18,7 @@ const Login = () => {
 
                     <h1>Medisense</h1>
 
-                    <select class="form-select" aria-label="Default select example">
+                    <select className="form-select" aria-label="Default select example">
                         <option selected>Department</option>
                         <option value="1">Admin</option>
                         <option value="2">Reception</option>
