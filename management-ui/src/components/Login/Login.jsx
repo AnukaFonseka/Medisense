@@ -45,7 +45,7 @@ const Login = () => {
                 }}
             >Login</button> */}
 
-            <NavLink to = "/profile" className = "login__btn"
+            <NavLink to = "/receptionHome" className = "login__btn"
                 onClick={() => {
                     dispatch(login({username: "pedro", password: "polls"}))
                 }}
