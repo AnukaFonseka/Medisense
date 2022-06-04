@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
     value: 0,
@@ -25,6 +25,6 @@ export const loginSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = loginSlice.actions
+export const {increment, decrement, incrementByAmount} = loginSlice.actions
 
 export default loginSlice.reducer

@@ -13,7 +13,7 @@ function App() {
                 <Switch>
                     <Route exact path="/login" component={Login}></Route>
                     <Route exact path="/receptionHome" component={ReceptionHome}></Route>
-                    <Redirect exact to="/login" from="/" />
+                    <Redirect exact to="/login" from="/"/>
                 </Switch>
             </ConnectedRouter>
         </div>
