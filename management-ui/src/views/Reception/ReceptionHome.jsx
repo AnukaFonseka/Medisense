@@ -5,7 +5,9 @@ import {NavLink} from "react-router-dom";
 const receptionHome = () => {
     return (
         <div className="home">
-            <h1>Reception Home</h1>
+            <div className="header">
+                <h1 className="title">Reception Home</h1>
+            </div>
             <div className="home__container">
 
                 <div className="details__container">
@@ -42,8 +44,9 @@ const receptionHome = () => {
                         </div>
                     </div>
                     <br/>
-                    <NavLink to="/" className="next__btn btn btn-primary"> Next </NavLink>
-
+                    <div className="btn">
+                        <NavLink to="/" className="next__btn btn btn-primary"> Next </NavLink>
+                    </div>
                 </div>
             </div>
 
