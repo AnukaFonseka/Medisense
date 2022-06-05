@@ -11,14 +11,14 @@
     align-items: center;
     padding: 50px;
     height: 100vh;
-    background-image: url("./images/pexels-pixabay-268415.jpg");
+    background-image: url("./images/back (1).jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .header {
     width: 80%;
-    background-color: #D4F1F4;
+    background-color: white;
     border-style: solid;
     border-bottom-width: 0px;
     border-color: #2F7DA4;
@@ -26,8 +26,9 @@
 
 .title {
     width: 50%;
-    font-size: 40px;
-    color: #050A30;
+    font-size: 50px;
+    color: black;
+    font-family: Impact;
 }
 
 .home__container {
@@ -43,19 +44,19 @@
     width: 50%;
     height: 450px;
     padding: 0 50px 0 50px;
-    background-color: #96CEEA;
+    background-color: white;
     border-style: solid;
     border-right-width: 0px;
     border-color: #2F7DA4;
-    font-weight: bold;
-    font-size: 25px;
-    color: #000C66;
+    font-size: 30px;
+    font-family:Rockwell;
+    color: black;
 }
 
 .category {
     width: 50%;
     height: 450px;
-    background-color: #96CEEA;
+    background-color: white;
     border-style: solid;
     border-color: #2F7DA4;
 }
@@ -72,17 +73,30 @@
 .form-check {
     width: 50% !important;
     height: 40px;
-    font-weight: bold;
+    font-family: Rockwell;
     font-size: 20px;
     margin-top: 5px !important;
     margin-bottom: 5px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .form-check-input {
     height: 20px !important;
     width: 20px !important;
     margin-top: 0px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+.form-check-label {
+    font-size: 25px;
+}
+
 
 .btn {
     width: 100%;
