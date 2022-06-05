@@ -27,7 +27,7 @@
 .title {
     width: 50%;
     font-size: 40px;
-    color: #011d38;
+    color: #050A30;
 }
 
 .home__container {
@@ -49,6 +49,7 @@
     border-color: #2F7DA4;
     font-weight: bold;
     font-size: 25px;
+    color: #000C66;
 }
 
 .category {
