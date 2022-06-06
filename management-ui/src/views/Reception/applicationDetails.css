@@ -32,8 +32,7 @@ h1{
     border-radius: 10px;
     padding: 10px;
     width: 75vw;
-
-
+    box-shadow: rgb(0 0 0 / 10%) 0rem 0.25rem 0.375rem -0.0625rem, rgb(0 0 0 / 6%) 0rem 0.125rem 0.25rem -0.0625rem;
 }
 
 .common__info__wrap {
