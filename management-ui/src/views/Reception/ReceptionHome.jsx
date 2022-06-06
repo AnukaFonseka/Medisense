@@ -45,7 +45,7 @@ const receptionHome = () => {
                     </div>
                     <br/>
                     <div className="btn">
-                        <NavLink to="/" className="next__btn btn btn-primary"> Next </NavLink>
+                        <NavLink to="/applicantDetails" className="next__btn btn btn-primary"> Next </NavLink>
                     </div>
                 </div>
             </div>
