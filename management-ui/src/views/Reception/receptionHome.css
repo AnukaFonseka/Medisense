@@ -32,7 +32,6 @@
     padding: 0 50px 0 50px;
     background-color: white;
     font-size: 20px;
-    /*font-family: 'Nanum Gothic', sans-serif;*/
     font-weight: 600;
     color: black;
     border-radius: 20px 20px 0 0;
@@ -73,13 +72,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-color: black;
-    border-width: 1.75px;
+    border-width: 1.3px !important;
 }
 
 .form-check-label {
     font-size: 18px;
-    /*font-family: 'Nanum Gothic', sans-serif;*/
     font-weight: 550;
 }
 
