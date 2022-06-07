@@ -5,6 +5,7 @@ import ReceptionHome from "./Reception/ReceptionHome";
 import GCC from "./Reception/GCC"
 import {ConnectedRouter} from "connected-react-router";
 import {history} from "../router/router";
+import OPD from "./Reception/OPD";
 
 function App() {
 
@@ -14,7 +15,8 @@ function App() {
                 <Switch>
                     <Route exact path="/login" component={Login}></Route>
                     <Route exact path="/receptionHome" component={ReceptionHome}></Route>
-                    <Route exact path="/applicantDetails" component={GCC}></Route>
+                    <Route exact path="/GCC" component={GCC}></Route>
+                    <Route exact path="/OPD" component={OPD}></Route>
                     <Redirect exact to="/login" from="/"/>
                 </Switch>
             </ConnectedRouter>
