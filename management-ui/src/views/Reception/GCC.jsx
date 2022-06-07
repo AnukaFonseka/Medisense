@@ -1,7 +1,7 @@
 import React from "react";
-import "./applicationDetails.css"
+import "./gcc.css"
 
-const ApplicantDetails = () => {
+const GCC = () => {
     return(
         <div className="main__container">
             <form className="form">
@@ -130,4 +130,4 @@ const ApplicantDetails = () => {
     )
 }
 
-export default ApplicantDetails
+export default GCC
