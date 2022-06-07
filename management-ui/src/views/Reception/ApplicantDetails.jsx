@@ -22,9 +22,9 @@ const ApplicantDetails = () => {
                             </div>
 
                             <div className="row">
-                                <div className="col">
+                                <div className="col-md-2">
                                     <label htmlFor="name">Title</label>
-                                    <select className="form-select">
+                                    <select className="form-select form-select__title">
                                         <option selected></option>
                                         <option value="1">Mr</option>
                                         <option value="2">Mrs</option>
