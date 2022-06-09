@@ -67,13 +67,6 @@ const OPD = () => {
 
                             </div>
 
-                            <div className="row">
-                                <div className="col">
-                                    <label htmlFor="phone">Phone</label>
-                                    <input className="form-control" type="phone" id="phone" name="phone"/>
-                                </div>
-
-                            </div>
 
                             <div className="row">
                                 <div className="col">

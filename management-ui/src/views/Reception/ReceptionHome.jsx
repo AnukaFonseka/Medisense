@@ -39,7 +39,7 @@ const receptionHome = () => {
                                 Repeat
                             </label>
                         </div>
-                        <NavLink to="/OPD" className="next__btn btn btn-primary"> Next </NavLink>
+                        <NavLink to="/GCC" className="next__btn btn btn-primary"> Next </NavLink>
                     </div>
                     <br/>
             </div>
