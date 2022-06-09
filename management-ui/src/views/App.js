@@ -7,6 +7,7 @@ import {ConnectedRouter} from "connected-react-router";
 import {history} from "../router/router";
 import OPD from "./Reception/OPD";
 import TestDetails from "./Reception/TestDetails";
+import AddAgency from "./Reception/AddAgency";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
                     <Route exact path="/GCC" component={GCC}></Route>
                     <Route exact path="/OPD" component={OPD}></Route>
                     <Route exact path="/testDetails" component={TestDetails}></Route>
+                    <Route exact path="/addAgency" component={AddAgency}></Route>
                     <Redirect exact to="/login" from="/"/>
                 </Switch>
             </ConnectedRouter>
