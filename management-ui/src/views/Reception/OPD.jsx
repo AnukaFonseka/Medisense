@@ -1,13 +1,18 @@
 import React from "react";
 import "./opd.css"
+import {NavLink} from "react-router-dom";
 
 const OPD = () => {
     return(
         <div className="main__container">
             <form className="form">
-
                 <div className="common__info">
                     <h1>Applicant Details</h1>
+
+                </div>
+                <br/>
+
+                <div className="common__info">
                     <div className="common__info__wrap">
                         <div className="common__info__details">
                             <div className="row">
@@ -85,7 +90,7 @@ const OPD = () => {
                                 </div>
                             </div>
 
-                            <button type="button" className="btn btn-primary">Save</button>
+                            <NavLink to = "/testDetails" className = "btn btn-primary mb-2" > Save </NavLink>
 
                         </div>
                     </div>
