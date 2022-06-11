@@ -13,10 +13,10 @@ h1{
     margin-bottom: 0 !important;
 }
 
-.main__container {
+.main__container__customer {
     background-color: rgb(240, 242, 245);
     padding: 20px;
-    height: 100vh !important;
+    height: 100% !important;
     display: flex;
     justify-content: center;
     padding-top: 70px;
@@ -25,6 +25,7 @@ h1{
 
 .form{
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -77,25 +78,4 @@ label {
     width: 100px;
     float: right;
     margin-top: 10px;
-}
-
-.agencyDiv {
-    display: flex;
-    width: inherit;
-}
-
-.agencyCol {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-}
-
-.btn__agency{
-    margin: 0!important;
-    border-radius: 0 0.25rem 0.25rem 0 !important;
-}
-
-.select__agency {
-    border-radius: 0.25rem 0 0 0.25rem !important;
 }

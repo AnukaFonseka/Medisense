@@ -96,14 +96,18 @@ const GCC = () => {
                             </div>
 
                             <div className="row">
-                                <div className="col">
+                                <div className="col agencyCol">
                                     <label htmlFor="agency">Agency</label>
-                                    <select className="form-select">
-                                        <option selected></option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select>
+                                    <div className="agencyDiv">
+                                        <select className="form-select select__agency">
+                                            <option selected></option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                        <NavLink to = "/addAgency" className = "btn__agency btn btn-secondary " >Add</NavLink>
+                                    </div>
+
                                 </div>
                                 <div className="col">
                                     <label htmlFor="job">Job Title</label>

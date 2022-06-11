@@ -4,6 +4,10 @@
     box-sizing: border-box;
     font-family: 'Nanum Gothic', sans-serif;
 }
+p {
+    margin-bottom: 0 !important;
+}
+
 
 .home {
     display: flex;
@@ -27,8 +31,10 @@
 }
 
 .details__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 40%;
-    height: 300px;
     padding: 0 50px 0 50px;
     background-color: white;
     font-size: 20px;
@@ -82,15 +88,17 @@
 
 .next__btn {
     width: 150px !important;
-    background: #6BACCC;
     border: none;
     color: white;
     font-size: 18px;
     border-radius: 3px;
-    cursor: pointer;
     text-decoration: none;
     margin-bottom: 10px;
     margin-top: 20px;
     margin-left: 0;
-    background-color: #00478F;
+}
+
+.view__btn {
+    width: 110px !important;
+    margin-top: 5px !important;
 }
