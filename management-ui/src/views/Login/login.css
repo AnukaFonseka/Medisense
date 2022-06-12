@@ -23,11 +23,13 @@
 }
 
 .login__form > h1 {
-    font-size: 40px;
+    font-size: 40px !important;
     margin-bottom: 15px;
     padding-bottom: 10px;
     letter-spacing: -1px;
     color: #011d38;
+    text-align: center;
+    padding-left: 0;
 
 }
 

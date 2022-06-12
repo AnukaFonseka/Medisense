@@ -2,73 +2,103 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size: 18px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+p {
+    margin-bottom: 0 !important;
 }
 
-h1 {
-    width: 80%;
-}
 
 .home {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /*background: gainsboro;*/
     padding: 50px;
-
+    height: 100vh;
+    background-image: url("./images/back (2).jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .home__container {
     display: flex;
+    flex-direction: column;
     width: 80%;
     align-items: center;
     justify-content: center;
-    /*background-color: #65DFF6;*/
-
+    height: 100vh;
 }
 
 .details__container {
-    width: 30%;
-
-    padding: 0 50px 0 50px;
-    /*background-color: bisque;*/
-}
-
-.category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 40%;
-    height: 100%;
-    /*background-color: antiquewhite;*/
-
+    padding: 0 50px 0 50px;
+    background-color: white;
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    border-radius: 20px 20px 0 0;
+    box-shadow: rgb(0 0 0 / 15%) 0rem 0.25rem 0.375rem -0.0625rem, rgb(0 0 0 / 8%) 0rem 0.125rem 0.25rem -0.0625rem;
 }
 
-.category__check {
-    width: 100%;
+.category__container {
+    width: 40%;
+    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: white;
+    border-radius:0 0 20px 20px ;
+    box-shadow: rgb(0 0 0 / 15%) 0rem 0.25rem 0.375rem -0.0625rem, rgb(0 0 0 / 8%) 0rem 0.125rem 0.25rem -0.0625rem;
+
 }
 
 .form-check {
     width: 50% !important;
+    height: 40px;
+    padding: 0;
     margin-top: 5px !important;
     margin-bottom: 5px !important;
+    margin-left: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
 }
 
 .form-check-input {
     height: 20px !important;
     width: 20px !important;
-    margin-top: 0px !important;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-width: 1.3px !important;
+}
+
+.form-check-label {
+    font-size: 18px;
+    font-weight: 550;
 }
 
 .next__btn {
-    margin-top: 10px;
-    background: #00478F;
+    width: 150px !important;
     border: none;
     color: white;
     font-size: 18px;
     border-radius: 3px;
-    cursor: pointer;
     text-decoration: none;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-left: 0;
+}
+
+.view__btn {
+    width: 110px !important;
+    margin-top: 5px !important;
 }
