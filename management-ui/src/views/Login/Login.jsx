@@ -1,8 +1,9 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {NavLink} from 'react-router-dom'
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {login} from '../../Features/user'
 import './login.css'
+import {increment} from "./index";
 
 const Login = () => {
 
@@ -10,13 +11,18 @@ const Login = () => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const count = useSelector((state) => state.login.value)
+
+    useEffect(() => {
+        dispatch(increment)
+    }, [])
 
     return (
         <div>
             <div className='login'>
                 <form className='login__form'>
 
-                    <h1>Medisense</h1>
+                    <h1>Medisense {count}</h1>
 
                     <select class="form-select" aria-label="Default select example">
                         <option selected>Department</option>
