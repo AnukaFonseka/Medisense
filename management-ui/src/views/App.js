@@ -2,13 +2,13 @@ import '../App.css';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import Login from "./Login/Login";
 import ReceptionHome from "./Reception/ReceptionHome";
-import GCC from "./Reception/GCC"
+import GCC from "./GCC/GCC"
 import {ConnectedRouter} from "connected-react-router";
 import {history} from "../router/router";
-import OPD from "./Reception/OPD";
-import TestDetails from "./Reception/TestDetails";
-import AddAgency from "./Reception/AddAgency";
-import CustomerDetails from "./Reception/CustomerDetails";
+import OPD from "./OPD/OPD";
+import TestDetails from "./TestDetails/TestDetails";
+import AddAgency from "./AddAgency/AddAgency";
+import CustomerDetails from "./CustomerDetails/CustomerDetails";
 
 function App() {
 

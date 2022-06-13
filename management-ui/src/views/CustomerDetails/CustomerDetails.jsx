@@ -46,7 +46,7 @@ const CustomerDetails = () => {
                             </div>
 
                             <div className="common__info__image">
-                                <img src={require("./images/1.png")} alt="" width="200px" height="200px"/>
+                                <img src={require("../Reception/images/1.png")} alt="" width="200px" height="200px"/>
                             </div>
 
                         </div>
