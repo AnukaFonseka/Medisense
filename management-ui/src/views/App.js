@@ -10,6 +10,7 @@ import TestDetails from "./TestDetails/TestDetails";
 import AddAgency from "./AddAgency/AddAgency";
 import CustomerDetails from "./CustomerDetails/CustomerDetails";
 import CashierList from "./CashierList/CashierList";
+import Cashier from "./Cashier/Cashier";
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
                     <Route exact path="/addAgency" component={AddAgency}></Route>
                     <Route exact path="/customerDetails" component={CustomerDetails}></Route>
                     <Route exact path="/cashierList" component={CashierList}></Route>
+                    <Route exact path="/cashier" component={Cashier}></Route>
                     <Redirect exact to="/login" from="/"/>
                 </Switch>
             </ConnectedRouter>
