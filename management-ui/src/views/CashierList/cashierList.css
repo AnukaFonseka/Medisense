@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nanum Gothic', sans-serif; }
+
+.main{
+    background-image: url("./Images/back (2).jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.name__container  {
+    padding-top: 80px;
+    margin-bottom: 30px;
+}
+
+.table {
+    table-layout: fixed;
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}

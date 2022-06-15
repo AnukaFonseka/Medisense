@@ -3,6 +3,13 @@ import "./customerDetails.css";
 
 const CustomerDetails = () => {
     return(
+        <div>
+            <nav aria-label="breadcrumb" className="navbar">
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><a href="receptionHome">Home</a></li>
+                    <li className="breadcrumb-item active" aria-current="page">Customer Details</li>
+                </ol>
+            </nav>
             <div className="main__container__customer">
                 <form className="form">
                     <div className="common__info">
@@ -143,6 +150,7 @@ const CustomerDetails = () => {
 
                 </form>
             </div>
+        </div>
     )
 }
 

@@ -4,6 +4,14 @@ import {NavLink} from "react-router-dom";
 
 const TestDetails = () => {
     return(
+        <div>
+            <nav aria-label="breadcrumb" className="navbar">
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><a href="receptionHome">Home</a></li>
+                    <li className="breadcrumb-item"><a href="GCC">GCC</a></li>
+                    <li className="breadcrumb-item active" aria-current="page">Test Details</li>
+                </ol>
+            </nav>
             <div className="main__container">
                 <form className="form">
 
@@ -22,6 +30,15 @@ const TestDetails = () => {
 
                     </div>
                     <br/>
+
+                    <div className="common__info">
+                        <div className="search__wrapper">
+                            <input className="searchbar" type="search" placeholder="Search..."/>
+                            <button className="btn btn-success">Add</button>
+                        </div>
+
+                    </div>
+                    <br/>
                     <div className="common__info">
                         <table className="table table-hover">
                             <thead>
@@ -36,12 +53,7 @@ const TestDetails = () => {
                             <tr>
                                 <th scope="row">1</th>
                                 <td>
-                                    <select className="form-select">
-                                        <option selected></option>
-                                        <option value="1">Married</option>
-                                        <option value="2">Single</option>
-                                        <option value="3">Widowed</option>
-                                    </select>
+                                    asasa
                                 </td>
                                 <td>Otto</td>
 
@@ -94,7 +106,7 @@ const TestDetails = () => {
                             </tbody>
                         </table>
 
-                        <NavLink to = "/testDetails" className = "btn btn-primary mb-2" > Save </NavLink>
+                        <NavLink to = "/cashierList" className = "btn btn-primary mb-2" > Save </NavLink>
 
                     </div>
 
@@ -102,6 +114,7 @@ const TestDetails = () => {
 
                 </form>
             </div>
+        </div>
     )
 }
 
