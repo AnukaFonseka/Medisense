@@ -5,7 +5,7 @@ const CashierList = () => {
     return(
 
         <div className="main">
-            <h2 className="name_container">Cashier List</h2>
+            <h2 className="name__container">Cashier List</h2>
             <div className="container">
                 <table className="table table-hover table table-bordered ">
                     <thead>
