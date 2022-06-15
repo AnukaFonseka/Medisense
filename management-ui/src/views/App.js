@@ -9,6 +9,7 @@ import OPD from "./OPD/OPD";
 import TestDetails from "./TestDetails/TestDetails";
 import AddAgency from "./AddAgency/AddAgency";
 import CustomerDetails from "./CustomerDetails/CustomerDetails";
+import CashierList from "./CashierList/CashierList";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
                     <Route exact path="/testDetails" component={TestDetails}></Route>
                     <Route exact path="/addAgency" component={AddAgency}></Route>
                     <Route exact path="/customerDetails" component={CustomerDetails}></Route>
+                    <Route exact path="/cashierList" component={CashierList}></Route>
                     <Redirect exact to="/login" from="/"/>
                 </Switch>
             </ConnectedRouter>
