@@ -102,7 +102,7 @@ const TestDetails = () => {
                             </tbody>
                         </table>
 
-                        <NavLink to = "/testDetails" className = "btn btn-primary mb-2" > Save </NavLink>
+                        <NavLink to = "/cashierList" className = "btn btn-primary mb-2" > Save </NavLink>
 
                     </div>
 
