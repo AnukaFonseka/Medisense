@@ -4,6 +4,14 @@ import {NavLink} from "react-router-dom";
 
 const TestDetails = () => {
     return(
+        <div>
+            <nav aria-label="breadcrumb" className="navbar">
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><a href="receptionHome">Home</a></li>
+                    <li className="breadcrumb-item"><a href="GCC">GCC</a></li>
+                    <li className="breadcrumb-item active" aria-current="page">Test Details</li>
+                </ol>
+            </nav>
             <div className="main__container">
                 <form className="form">
 
@@ -102,6 +110,7 @@ const TestDetails = () => {
 
                 </form>
             </div>
+        </div>
     )
 }
 
