@@ -13,6 +13,15 @@ const receptionHome = () => {
         <div className="home">
             <div className="home__container">
 
+                <div className="common__info">
+                    <div className="search__wrapper">
+                        <input className="searchbar" type="search" placeholder="Search..."/>
+                        <button className="btn btn-success">Add</button>
+                    </div>
+
+                </div>
+                <br/>
+
                     <div className="details__container">
                         <br/>
                         <img src={require("./images/1.png")} alt="" width="150px" height="150px"/><br/>
