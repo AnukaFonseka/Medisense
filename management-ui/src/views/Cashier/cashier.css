@@ -15,7 +15,6 @@ h1{
 .main__container {
     background-color: rgb(240, 242, 245);
     padding: 20px;
-    height: 100px;
     display: flex;
     justify-content: center;
     padding-top: 70px;
@@ -64,12 +63,15 @@ h1{
 }
 
 .row {
-    margin: 10px;
-    width: 100%;
+   padding-left: 50px;
 }
 
-label {
+.label {
     float: left;
+}
+
+.table th {
+    text-align: center;
 }
 
 .btn {
@@ -82,31 +84,48 @@ label {
 
 
 .category_container {
-    height: 80px;
     width: 880px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    margin-right: 300px;
     justify-content: center;
     align-items: flex-start;
-
 }
 
-.col_box{
-    width: 408.96px !important;
-    justify-items: center !important;
-    margin-left: 220px !important;
+.category_con {
+    display: flex;
+    flex-direction: row;
 }
+
 
 .form--check {
-    width: 50% !important;
     height: 40px;
     padding: 0;
     margin-top: 5px !important;
     margin-bottom: 5px !important;
-    margin-left: 7%;
     display: flex;
     flex-direction: row;
     justify-content: left;
     align-items: center;
+}
+
+.form-ctrl {
+    width: 350px !important;
+    height: 40px !important;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.form-select {
+    color: black !important;
+    margin-left: 50px;
+    width: 350px !important;
+    height: 40px !important;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.select option:first-child {
+    color: red !important;
 }
 
