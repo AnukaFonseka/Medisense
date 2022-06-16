@@ -7,13 +7,13 @@ const CashierList = () => {
         <div className="main">
             <h2 className="name__container">Cashier List</h2>
             <div className="container">
-                <table className="table table-hover table table-bordered ">
+                <table className="table table-hover table table-bordered">
                     <thead>
-                    <tr style={{textAlign:'center'}}>
-                        <th>Name</th>
-                        <th>Id</th>
-                        <th >Action</th>
-                    </tr>
+                        <tr style={{textAlign:'center'}}>
+                            <th>Name</th>
+                            <th>Id</th>
+                            <th >Action</th>
+                        </tr>
                     </thead>
 
                     <tbody>

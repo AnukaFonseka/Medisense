@@ -5,10 +5,8 @@
     font-family: 'Nanum Gothic', sans-serif; }
 
 .main{
-    background-image: url("./Images/back (2).jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
+    /*height: 100vh;*/
+    /*background-color: white;*/
 }
 
 .name__container  {
@@ -18,6 +16,10 @@
 
 .table {
     table-layout: fixed;
+}
+
+.table th {
+    background-color: #61dafb;
 }
 
 .table td {
