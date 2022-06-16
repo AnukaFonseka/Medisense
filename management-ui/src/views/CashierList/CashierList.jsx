@@ -1,19 +1,26 @@
 import React from "react";
 import "./cashierList.css";
+import {NavLink} from "react-router-dom";
 
 const CashierList = () => {
     return(
 
-        <div className="main">
-            <h2 className="name__container">Cashier List</h2>
-            <div className="container">
-                <table className="table table-hover table table-bordered ">
+        <div className="main__container">
+          <form className="form">
+              <div className="common__info">
+                  <h1>Cashier List</h1>
+              </div>
+
+              <br/>
+
+            <div className="common__info">
+                <table className="table table-hover">
                     <thead>
-                    <tr style={{textAlign:'center'}}>
-                        <th>Name</th>
-                        <th>Id</th>
-                        <th >Action</th>
-                    </tr>
+                        <tr style={{textAlign:'center'}}>
+                            <th>Name</th>
+                            <th>Id</th>
+                            <th >Action</th>
+                        </tr>
                     </thead>
 
                     <tbody>
@@ -21,7 +28,7 @@ const CashierList = () => {
                                 <td> Reyna </td>
                                 <td> 001 </td>
                                 <td style={{display:'flex', justifyContent: "center"}}>
-                                    <button style={{marginLeft: "20px"}}  className="btn btn-success">View</button>
+                                    <NavLink to = "/cashier" className = "btn btn-primary mb-2" style={{marginLeft: "20px"}} > View </NavLink>
                                 </td>
                             </tr>
 
@@ -29,7 +36,7 @@ const CashierList = () => {
                                 <td> Yoru </td>
                                 <td> 002 </td>
                                 <td style={{display:'flex', justifyContent: "center"}}>
-                                    <button style={{marginLeft: "20px"}}  className="btn btn-success">View</button>
+                                    <NavLink to = "/cashier" className = "btn btn-primary mb-2" style={{marginLeft: "20px"}} > View </NavLink>
                                 </td>
                             </tr>
 
@@ -37,13 +44,14 @@ const CashierList = () => {
                                 <td> Raze </td>
                                 <td> 003 </td>
                                 <td style={{display:'flex', justifyContent: "center"}}>
-                                    <button style={{marginLeft: "20px"}}  className="btn btn-success">View</button>
+                                    <NavLink to = "/cashier" className = "btn btn-primary mb-2" style={{marginLeft: "20px"}} > View </NavLink>
                                 </td>
                             </tr>
 
                     </tbody>
                 </table>
             </div>
+          </form>
         </div>
 
     )
