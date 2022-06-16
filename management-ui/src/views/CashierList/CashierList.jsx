@@ -1,5 +1,6 @@
 import React from "react";
 import "./cashierList.css";
+import {NavLink} from "react-router-dom";
 
 const CashierList = () => {
     return(
@@ -27,7 +28,7 @@ const CashierList = () => {
                                 <td> Reyna </td>
                                 <td> 001 </td>
                                 <td style={{display:'flex', justifyContent: "center"}}>
-                                    <button style={{marginLeft: "20px"}}  className="btn btn-success">View</button>
+                                    <NavLink to = "/cashier" className = "btn btn-primary mb-2" style={{marginLeft: "20px"}} > View </NavLink>
                                 </td>
                             </tr>
 
@@ -35,7 +36,7 @@ const CashierList = () => {
                                 <td> Yoru </td>
                                 <td> 002 </td>
                                 <td style={{display:'flex', justifyContent: "center"}}>
-                                    <button style={{marginLeft: "20px"}}  className="btn btn-success">View</button>
+                                    <NavLink to = "/cashier" className = "btn btn-primary mb-2" style={{marginLeft: "20px"}} > View </NavLink>
                                 </td>
                             </tr>
 
@@ -43,7 +44,7 @@ const CashierList = () => {
                                 <td> Raze </td>
                                 <td> 003 </td>
                                 <td style={{display:'flex', justifyContent: "center"}}>
-                                    <button style={{marginLeft: "20px"}}  className="btn btn-success">View</button>
+                                    <NavLink to = "/cashier" className = "btn btn-primary mb-2" style={{marginLeft: "20px"}} > View </NavLink>
                                 </td>
                             </tr>
 
