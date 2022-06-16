@@ -4,22 +4,8 @@
     box-sizing: border-box;
     font-family: 'Nanum Gothic', sans-serif; }
 
-.main{
-    /*height: 100vh;*/
-    /*background-color: white;*/
-}
-
-.name__container  {
-    padding-top: 80px;
-    margin-bottom: 30px;
-}
-
 .table {
     table-layout: fixed;
-}
-
-.table th {
-    background-color: #61dafb;
 }
 
 .table td {

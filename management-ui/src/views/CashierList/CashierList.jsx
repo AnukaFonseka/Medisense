@@ -4,9 +4,15 @@ import "./cashierList.css";
 const CashierList = () => {
     return(
 
-        <div className="main">
-            <h2 className="name__container">Cashier List</h2>
-            <div className="container">
+        <div className="main__container">
+          <form className="form">
+              <div className="common__info">
+                  <h1>Cashier List</h1>
+              </div>
+
+              <br/>
+
+            <div className="common__info">
                 <table className="table table-hover table table-bordered">
                     <thead>
                         <tr style={{textAlign:'center'}}>
@@ -44,6 +50,7 @@ const CashierList = () => {
                     </tbody>
                 </table>
             </div>
+          </form>
         </div>
 
     )
