@@ -100,7 +100,7 @@ const Cashier = () => {
                             <div className="category-container">
                                 <div className="form--check">
                                     <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                    <label className="form-check-label" htmlFor="flexCheckDefault">
+                                    <label className="form-check-label" htmlFor="flexRadioDefault1">
                                         Cash
                                     </label>
                                 </div>
@@ -108,7 +108,7 @@ const Cashier = () => {
                                 <div className="category-con1">
                                     <div className="form--check">
                                         <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                                        <label className="form-check-label" htmlFor="flexRadioDefault2">
                                             Cheque
                                         </label>
                                     </div>
@@ -134,7 +134,7 @@ const Cashier = () => {
                                 <div className="category-con2">
                                     <div className="form--check">
                                         <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"/>
-                                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                                        <label className="form-check-label" htmlFor="flexRadioDefault3">
                                             Credit
                                         </label>
                                     </div>
