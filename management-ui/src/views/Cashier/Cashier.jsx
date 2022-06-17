@@ -4,8 +4,8 @@ import {NavLink} from "react-router-dom";
 
 const Cashier = () => {
     return(
-        <div className="main__container">
-            <form className="form">
+        <div className="main--container">
+            <form className="formm">
                 <div className="common__info">
                     <h1>Cashier</h1>
                 </div>
@@ -95,8 +95,9 @@ const Cashier = () => {
                                     </div>
                                 </div>
 
+                                {/*Cash,Cheque,Credit selection*/}
 
-                                <div className="category_container">
+                                <div className="category-container">
                                     <div className="form--check">
                                         <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
                                         <label className="form-check-label" htmlFor="flexCheckDefault">
@@ -104,7 +105,7 @@ const Cashier = () => {
                                         </label>
                                     </div>
 
-                                    <div className="category_con">
+                                    <div className="category-con1">
                                         <div className="form--check">
                                             <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
                                             <label className="form-check-label" htmlFor="flexCheckDefault">
@@ -113,13 +114,13 @@ const Cashier = () => {
                                         </div>
 
                                         <div  className="category-box">
-                                            <div className="row">
-                                                <input className="form-ctrl" type="text" id="cheque" name="cheque" placeholder="Cheque No"/>
+                                            <div className="roww">
+                                                <input className="form-ctrl" type="text" id="cheque" name="cheque" placeholder="  Cheque No"/>
                                             </div>
-                                            <div className="row">
-                                                <input className="form-ctrl" type="text" id="chequeDate" name="chequeDate" placeholder="Cheque Date"/>
+                                            <div className="roww">
+                                                <input className="form-ctrl" type="text" id="chequeDate" name="chequeDate" placeholder="  Cheque Date"/>
                                             </div>
-                                            <div className="row">
+                                            <div className="roww">
                                                 <select className="form-select select__bank" >
                                                     <option selected></option>
                                                     <option value="" disabled selected>Bank</option>
@@ -130,7 +131,7 @@ const Cashier = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="category_con">
+                                    <div className="category-con2">
                                         <div className="form--check">
                                             <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"/>
                                             <label className="form-check-label" htmlFor="flexCheckDefault">
@@ -138,7 +139,7 @@ const Cashier = () => {
                                             </label>
                                         </div>
                                         <div className="col">
-                                            <select className="form-select">
+                                            <select className="form--select">
                                                 <option value="" disabled selected>Credit Approved By</option>
                                                 <option value="1">Mr.Rohan</option>
                                                 <option value="2">Mario</option>
