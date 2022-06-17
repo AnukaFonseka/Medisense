@@ -140,7 +140,7 @@ const Cashier = () => {
                                         </div>
                                         <div className="col">
                                             <select className="form--select">
-                                                <option value="" disabled selected>Credit Approved By</option>
+                                                <option value="" disabled selected>  Credit Approved By</option>
                                                 <option value="1">Mr.Rohan</option>
                                                 <option value="2">Mario</option>
                                                 <option value="3">Nurse Anty</option>

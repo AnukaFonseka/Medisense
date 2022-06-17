@@ -76,8 +76,6 @@ h1{
     margin-right: 25px;
 }
 
-
-
 .category-container {
     width: 880px;
     display: flex;
@@ -133,8 +131,3 @@ h1{
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
 }
-
-.select option:first-child {
-    color: red !important;
-}
-
