@@ -1,3 +1,6 @@
+
+
+
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +15,7 @@ h1{
     font-size: 25px !important;
 }
 
-.main__container {
+.main--container {
     background-color: rgb(240, 242, 245);
     padding: 20px;
     display: flex;
@@ -21,12 +24,11 @@ h1{
 }
 
 
-.form{
+.formm{
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 .common__info {
@@ -62,10 +64,6 @@ h1{
     width: 30%;
 }
 
-.row {
-   padding-left: 50px;
-}
-
 .label {
     float: left;
 }
@@ -81,9 +79,7 @@ h1{
     margin-right: 25px;
 }
 
-
-
-.category_container {
+.category-container {
     width: 880px;
     display: flex;
     flex-direction: column;
@@ -92,11 +88,25 @@ h1{
     align-items: flex-start;
 }
 
-.category_con {
+.category-con1 {
     display: flex;
     flex-direction: row;
+    margin-bottom: 20px;
 }
 
+.category-con2 {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+
+.category-box {
+    margin-left: 50px;
+}
+
+.roww {
+    margin-bottom: 20px;
+}
 
 .form--check {
     height: 40px;
@@ -116,16 +126,11 @@ h1{
     border-radius: 0.25rem;
 }
 
-.form-select {
+.form--select {
     color: black !important;
-    margin-left: 50px;
+    margin-left: 65px;
     width: 350px !important;
     height: 40px !important;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
 }
-
-.select option:first-child {
-    color: red !important;
-}
-
