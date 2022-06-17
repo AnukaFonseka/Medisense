@@ -16,7 +16,7 @@ const CashierList = () => {
             <div className="common__info">
                 <table className="table table-hover">
                     <thead>
-                        <tr style={{textAlign:'center'}}>
+                        <tr style={{textAlign:'center' , backgroundColor:'#CFF4FC'}}>
                             <th>Name</th>
                             <th>Id</th>
                             <th >Action</th>
