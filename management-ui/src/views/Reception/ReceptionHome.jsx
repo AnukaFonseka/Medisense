@@ -16,7 +16,7 @@ const receptionHome = () => {
                 <div className="common__info">
                     <div className="search__wrapper">
                         <input className="searchbar" type="search" placeholder="Search..."/>
-                        <button className="btn btn-success">Add</button>
+                        <button className="btn btn-success">Search</button>
                     </div>
 
                 </div>
