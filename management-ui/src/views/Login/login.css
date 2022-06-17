@@ -30,12 +30,10 @@
     color: #011d38;
     text-align: center;
     padding-left: 0;
-
 }
 
 .login__form > select {
     margin-bottom: 10px;
-    outline: none;
     border: 1px solid #A1DBF1;
     color: rgb(108, 107, 107);
     font-family: 'Nanum Gothic', sans-serif;
