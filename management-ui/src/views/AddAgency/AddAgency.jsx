@@ -3,6 +3,14 @@ import "./addAgency.css";
 
 const AddAgency = () => {
     return(
+        <div>
+            <nav aria-label="breadcrumb" className="navbar">
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><a href="receptionHome">Home</a></li>
+                    <li className="breadcrumb-item"><a href="GCC">GCC</a></li>
+                    <li className="breadcrumb-item active" aria-current="page">Add Agency</li>
+                </ol>
+            </nav>
             <div className="main__container">
                 <form className="form">
                     <div className="common__info">
@@ -80,6 +88,7 @@ const AddAgency = () => {
                     </div>
                 </form>
             </div>
+        </div>
     )
 }
 export default AddAgency

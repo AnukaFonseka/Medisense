@@ -4,6 +4,13 @@ import {NavLink} from "react-router-dom";
 
 const GCC = () => {
     return(
+        <div>
+            <nav aria-label="breadcrumb" className="navbar">
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><a href="receptionHome">Home</a></li>
+                    <li className="breadcrumb-item active" aria-current="page">GCC</li>
+                </ol>
+            </nav>
         <div className="main__container">
             <form className="form">
                 <div className="common__info">
@@ -55,7 +62,7 @@ const GCC = () => {
                         </div>
 
                         <div className="common__info__image">
-                            <img src={require("./images/1.png")} alt="" width="200px" height="200px"/>
+                            <img src={require("../Reception/images/1.png")} alt="" width="200px" height="200px"/>
                         </div>
 
                     </div>
@@ -135,6 +142,7 @@ const GCC = () => {
                     </div>
                 </div>
             </form>
+        </div>
         </div>
     )
 }

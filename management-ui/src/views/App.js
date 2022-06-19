@@ -2,13 +2,15 @@ import '../App.css';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import Login from "./Login/Login";
 import ReceptionHome from "./Reception/ReceptionHome";
-import GCC from "./Reception/GCC"
+import GCC from "./GCC/GCC"
 import {ConnectedRouter} from "connected-react-router";
 import {history} from "../router/router";
-import OPD from "./Reception/OPD";
-import TestDetails from "./Reception/TestDetails";
-import AddAgency from "./Reception/AddAgency";
-import CustomerDetails from "./Reception/CustomerDetails";
+import OPD from "./OPD/OPD";
+import TestDetails from "./TestDetails/TestDetails";
+import AddAgency from "./AddAgency/AddAgency";
+import CustomerDetails from "./CustomerDetails/CustomerDetails";
+import CashierList from "./CashierList/CashierList";
+import Cashier from "./Cashier/Cashier";
 
 function App() {
 
@@ -23,6 +25,8 @@ function App() {
                     <Route exact path="/testDetails" component={TestDetails}></Route>
                     <Route exact path="/addAgency" component={AddAgency}></Route>
                     <Route exact path="/customerDetails" component={CustomerDetails}></Route>
+                    <Route exact path="/cashierList" component={CashierList}></Route>
+                    <Route exact path="/cashier" component={Cashier}></Route>
                     <Redirect exact to="/login" from="/"/>
                 </Switch>
             </ConnectedRouter>
