@@ -12,6 +12,8 @@ CREATE TABLE `users`
     UNIQUE KEY `uk_users_username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `users` (`name`, `username`, `password`) values ('Anuka', 'Anuka', '$2a$10$wRft55.WsnI./GehYR6xQOBM/FL5F960BMx7RWS5mntDD9j/h4qOC');
+
 
 CREATE TABLE `roles`
 (
@@ -20,6 +22,8 @@ CREATE TABLE `roles`
     PRIMARY KEY (`id`),
     UNIQUE KEY `uk_roles_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+INSERT INTO `roles` (`name`) values ('ADMIN');
 
 
 CREATE TABLE `user_roles`
@@ -31,3 +35,5 @@ CREATE TABLE `user_roles`
     CONSTRAINT `fk_user_roles_role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
     CONSTRAINT `fk_user_roles_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `user_roles` (`user_id`, `role_id`) values (1, 4);
