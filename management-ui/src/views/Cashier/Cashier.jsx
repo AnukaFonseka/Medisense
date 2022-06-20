@@ -150,8 +150,8 @@ const Cashier = () => {
                             </div>
 
                             <div className="button">
-                                <NavLink to = "/testDetails" className = "btn btn-primary mb-2" > Save </NavLink>
-                                <NavLink to = "/testDetails" className = "btn btn-primary mb-2" > Print </NavLink>
+                                <NavLink to = "/testDetails" className = "save__btn btn btn-primary mb-2" > Save </NavLink>
+                                <NavLink to = "/testDetails" className = "print__btn btn btn-primary mb-2" > Print </NavLink>
                             </div>
                         </div>
                     </div>

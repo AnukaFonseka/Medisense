@@ -22,7 +22,7 @@ const Login = () => {
             <div className='login'>
                 <form className='login__form'>
 
-                    <h1>Medisense {count}</h1>
+                    <h1>Medisense</h1>
 
                     <select className="form-select" aria-label="Default select example">
                         <option selected>Department</option>
