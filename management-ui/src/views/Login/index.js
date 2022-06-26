@@ -1,30 +1,36 @@
 import {createSlice} from '@reduxjs/toolkit'
+import {loginThunk} from "../../apiCalls/apiCalls";
 
 const initialState = {
-    value: 0,
+    isLoginPending: false,
+    isLoginSuccess: false,
+    isLoginError: false,
+    user: {}
 }
 
 export const loginSlice = createSlice({
     name: 'login',
     initialState,
-    reducers: {
-        increment: (state) => {
-            // Redux Toolkit allows us to write "mutating" logic in reducers. It
-            // doesn't actually mutate the state because it uses the Immer library,
-            // which detects changes to a "draft state" and produces a brand new
-            // immutable state based off those changes
-            state.value += 1
-        },
-        decrement: (state) => {
-            state.value -= 1
-        },
-        incrementByAmount: (state, action) => {
-            state.value += action.payload
-        },
-    },
+    reducers: {},
+    extraReducers(builder) {
+        builder.addCase(loginThunk.pending, (state, action) => {
+            state.isLoginPending = true
+            state.isLoginSuccess = false
+        })
+        builder.addCase(loginThunk.fulfilled, (state, action) => {
+            state.user = action.payload
+            state.isLoginPending = false
+            if(action.payload.status === '200') {
+                state.isLoginSuccess = true
+            } else {
+                state.isLoginSuccess = false
+            }
+        })
+    }
 })
 
 // Action creators are generated for each case reducer function
 export const {increment, decrement, incrementByAmount} = loginSlice.actions
 
 export default loginSlice.reducer
+export const loginSelector = state => state.login

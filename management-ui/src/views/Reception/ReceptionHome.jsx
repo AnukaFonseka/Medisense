@@ -2,7 +2,7 @@ import React from 'react'
 import './receptionHome.css'
 import {NavLink} from "react-router-dom";
 
-const receptionHome = () => {
+const ReceptionHome = () => {
     return (
         <div>
             <nav className="navbar" aria-label="breadcrumb">
@@ -64,4 +64,4 @@ const receptionHome = () => {
     )
 }
 
-export default receptionHome
+export default ReceptionHome

@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {NavLink} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux';
-import {login} from '../../Features/user'
 import './login.css'
-import {increment} from "./index";
+import {increment, loginSelector} from "./index";
+import {loginThunk} from "../../apiCalls/apiCalls";
+import {useHistory} from "react-router-dom";
 
 const Login = () => {
 
@@ -11,11 +12,18 @@ const Login = () => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const count = useSelector((state) => state.login.value)
+    const [displayLoginError, setDisplayLoginError] = useState(false)
+    // const user = useSelector((state) => state.login.user)
+    const {isLoginPending, isLoginSuccess, isLoginError, user} = useSelector(loginSelector)
+    const history = useHistory();
 
     useEffect(() => {
-        dispatch(increment)
-    }, [])
+        if(isLoginSuccess) {
+            history.push('/receptionHome')
+        } else {
+            setDisplayLoginError(true)
+        }
+    }, [user])
 
     return (
         <div>
@@ -44,6 +52,15 @@ const Login = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
 
+                    <div>
+                        {displayLoginError && user.status === '420' ?
+                            <p>
+                                Username or password invalid
+                            </p> :
+                            <></>
+                        }
+                    </div>
+
                     {/* <button type='submit' className='login__btn'
                 onClick={(e) => {
                     e.preventDefault()
@@ -51,12 +68,15 @@ const Login = () => {
                 }}
             >Login</button> */}
 
-                    <NavLink to="/receptionHome" className="login__btn"
-                             onClick={() => {
-                                 dispatch(login({username: "pedro", password: "polls"}))
-                             }}
-                    > Login </NavLink>
+
                 </form>
+                <button className="login__btn"
+                        onClick={() => {
+                            let obj = {username: username, password: password}
+                            dispatch(loginThunk(obj))
+                        }}
+                > Login
+                </button>
 
             </div>
         </div>
