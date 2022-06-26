@@ -1,0 +1,61 @@
+<!--
+  ~ (C) Copyright 2007-2009 hSenid Software International (Pvt) Limited.
+  ~ All Rights Reserved.
+  ~
+  ~ These materials are unpublished, proprietary, confidential source code of
+  ~ hSenid Software International (Pvt) Limited and constitute a TRADE SECRET
+  ~ of hSenid Software International (Pvt) Limited.
+  ~
+  ~ hSenid Software International (Pvt) Limited retains all title to and intellectual
+  ~ property rights in these materials.
+  -->
+
+<assembly>
+    <formats>
+        <!--<format>tar.gz</format>-->
+        <format>zip</format>
+    </formats>
+    <fileSets>
+        <fileSet>
+            <directory>${assembler.basedir}/${artifactId}/lib</directory>
+            <outputDirectory>lib</outputDirectory>
+            <excludes>
+                <exclude>*.zip</exclude>
+                <exclude>*.xml</exclude>
+            </excludes>
+            <fileMode>0755</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>${assembler.basedir}/${artifactId}/</directory>
+            <outputDirectory>.</outputDirectory>
+            <excludes>
+                <exclude>bin/**</exclude>
+                <exclude>conf/**</exclude>
+                <exclude>lib/**</exclude>
+                <exclude>logs/**</exclude>
+                <exclude>installer_content/**</exclude>
+            </excludes>
+        </fileSet>
+        <fileSet>
+            <directory>${assembler.basedir}/${artifactId}/logs</directory>
+            <outputDirectory>logs</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${assembler.basedir}/${artifactId}/conf</directory>
+            <outputDirectory>conf</outputDirectory>
+        </fileSet>
+        <!--        <fileSet>-->
+        <!--            <directory>${assembler.basedir}/${artifactId}/etc</directory>-->
+        <!--            <outputDirectory>etc</outputDirectory>-->
+        <!--        </fileSet>-->
+        <fileSet>
+            <directory>${assembler.basedir}/${artifactId}/installer_content</directory>
+            <outputDirectory>installer_content</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${assembler.basedir}/${artifactId}/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <fileMode>0755</fileMode>
+        </fileSet>
+    </fileSets>
+</assembly>

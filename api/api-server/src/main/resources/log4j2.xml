@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG" monitorInterval="60">
+
+    <Properties>
+        <Property name="log-path">/hms/logs/medisense</Property>
+        <Property name="log-pattern">%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %x [%X{txid}] %c{1} [%t] - %msg%n</Property>
+        <Property name="mongo-log-pattern">%msg%n</Property>
+        <Property name="log-rotate-pattern">%d{yyyy-MM-dd}.log</Property>
+        <Property name="log-rotate-pattern-mongo">%d{yyyy-MM-dd-HH-mm}.log</Property>
+        <Property name="audit-trail-log-pattern">%d{yyyy-MM-dd HH:mm:ss.SSS}|%msg%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="console-log" target="SYSTEM_OUT" fileName="${log-path}/console.log">z
+            <PatternLayout pattern="${log-pattern}"/>
+        </Console>
+
+        <RollingRandomAccessFile name="debug-log" fileName="${log-path}/debug.log"
+                                 filePattern="${log-path}/debug-${log-rotate-pattern}">
+            <PatternLayout pattern="${log-pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy max="7"/>
+        </RollingRandomAccessFile>
+
+        <RollingFile name="audit-trail" fileName="${log-path}/audit-trail.log"
+                                 filePattern="${log-path}/audit-trail-${log-rotate-pattern}">
+            <PatternLayout pattern="${audit-trail-log-pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy max="7"/>
+        </RollingFile>
+
+        <RollingRandomAccessFile name="info-log" fileName="${log-path}/info.log"
+                                 filePattern="${log-path}/info-${log-rotate-pattern}">
+            <PatternLayout pattern="${log-pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy max="7"/>
+        </RollingRandomAccessFile>
+
+        <RollingFile name="error-log" fileName="${log-path}/error.log"
+                     filePattern="${log-path}/error-${log-rotate-pattern}">
+            <PatternLayout pattern="${log-pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy max="7"/>
+        </RollingFile>
+    </Appenders>
+
+
+
+    <Loggers>
+        <Logger name="hms" level="debug" additivity="false">
+            <appender-ref ref="debug-log" level="debug"/>
+            <appender-ref ref="info-log" level="info"/>
+            <appender-ref ref="error-log" level="error"/>
+            <appender-ref ref="console-log" level="info"/>
+        </Logger>
+
+        <Root level="debug" additivity="false">
+            <appender-ref ref="debug-log" level="debug"/>
+            <appender-ref ref="info-log" level="info"/>
+            <appender-ref ref="error-log" level="warn"/>
+            <appender-ref ref="console-log" level="info"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

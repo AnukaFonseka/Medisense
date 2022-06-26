@@ -1,5 +1,7 @@
 package com.medisense.apiserver.config;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 
@@ -29,6 +31,8 @@ public class JwtConfiguration {
     @Value("${app.security.jwt.private-key-passphrase}")
     private String privateKeyPassphrase;
 
+    private static final Logger logger= LogManager.getLogger(JwtConfiguration.class);
+
     @Bean
     public KeyStore keyStore() {
         try {
@@ -37,7 +41,7 @@ public class JwtConfiguration {
             keyStore.load(resourceAsStream, keyStorePassword.toCharArray());
             return keyStore;
         } catch (IOException | CertificateException | NoSuchAlgorithmException | KeyStoreException e) {
-//            log.error("Unable to load keystore: {}", keyStorePath, e);
+            logger.error("Unable to load keystore: {}", keyStorePath, e);
         }
 
         throw new IllegalArgumentException("Unable to load keystore");
@@ -51,7 +55,7 @@ public class JwtConfiguration {
                 return (RSAPrivateKey) key;
             }
         } catch (UnrecoverableKeyException | NoSuchAlgorithmException | KeyStoreException e) {
-//            log.error("Unable to load private key from keystore: {}", keyStorePath, e);
+            logger.error("Unable to load private key from keystore: {}", keyStorePath, e);
         }
 
         throw new IllegalArgumentException("Unable to load private key");
@@ -67,7 +71,7 @@ public class JwtConfiguration {
                 return (RSAPublicKey) publicKey;
             }
         } catch (KeyStoreException e) {
-//            log.error("Unable to load private key from keystore: {}", keyStorePath, e);
+            logger.error("Unable to load private key from keystore: {}", keyStorePath, e);
         }
 
         throw new IllegalArgumentException("Unable to load RSA public key");
