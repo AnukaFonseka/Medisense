@@ -70,11 +70,10 @@ h1{
     text-align: center;
 }
 
-.btn {
-    width: 100px;
-    float: left;
-    margin-top: 10px;
-    margin-right: 25px;
+.print__btn, .save__btn {
+    /*float: left!important;*/
+    margin-top: 10px!important;
+    margin-right: 25px!important;
 }
 
 .category-container {
