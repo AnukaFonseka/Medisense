@@ -22,7 +22,7 @@
 
 }
 
-.login__form > h1 {
+.login__form__inputs > h1 {
     font-size: 40px !important;
     margin-bottom: 15px;
     padding-bottom: 10px;
@@ -30,19 +30,10 @@
     color: #011d38;
     text-align: center;
     padding-left: 0;
+    width: 100%;
 }
 
-.login__form > select {
-    margin-bottom: 10px;
-    border: 1px solid #A1DBF1;
-    color: rgb(108, 107, 107);
-    font-family: 'Nanum Gothic', sans-serif;
-    font-size: 15px;
-    height: 50px;
-
-}
-
-.login__form > input {
+.login__form__inputs > input {
     /* min-width: 380px; */
     padding: 20px 0;
     padding-left: 15px;
@@ -52,6 +43,7 @@
     border-radius: 2px;
     font-size: 15px;
     height: 50px;
+    width: 100%;
 }
 
 
@@ -70,4 +62,8 @@
 .login__btn:hover {
     background-color: #3F3F4E;
     color: white;
+}
+
+.feedback > p {
+    color: red;
 }

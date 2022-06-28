@@ -28,16 +28,10 @@ const Login = () => {
     return (
         <div>
             <div className='login'>
-                <form className='login__form'>
+                <div className='login__form'>
+                <form className='login__form__inputs'>
 
                     <h1>Medisense</h1>
-
-                    <select className="form-select" aria-label="Default select example">
-                        <option selected>Department</option>
-                        <option value="1">Admin</option>
-                        <option value="2">Reception</option>
-                        <option value="3">Mini Lab</option>
-                    </select>
 
                     <input
                         type="text"
@@ -52,7 +46,7 @@ const Login = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
 
-                    <div>
+                    <div className={"feedback"}>
                         {displayLoginError && user.status === '420' ?
                             <p>
                                 Username or password invalid
@@ -77,6 +71,7 @@ const Login = () => {
                         }}
                 > Login
                 </button>
+                </div>
 
             </div>
         </div>
