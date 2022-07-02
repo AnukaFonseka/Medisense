@@ -8,7 +8,7 @@ const XrayList = () => {
         <div className="main__container">
           <form className="form">
               <div className="common__info">
-                  <h1>X-Ray List</h1>
+                  <h1>X - Ray List</h1>
               </div>
 
               <br/>
