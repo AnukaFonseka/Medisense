@@ -88,7 +88,7 @@ const Xray = () => {
                     </div>
                     <div className="category-container-xray">
                         <div className="col">
-                            <select className="form--select" >
+                            <select className="form--select-1" >
                                 <option selected></option>
                                 <option value="" disabled selected>X-Ray Results</option>
                                 <option value="1">Pass</option>
@@ -97,7 +97,7 @@ const Xray = () => {
                         </div>
 
                         <div className="col">
-                            <select className="form--select">
+                            <select className="form--select-1">
                                 <option value="" disabled selected>Radiographer</option>
                                 <option value="1">Mr.Rohan</option>
                                 <option value="2">Mr.Mario</option>
