@@ -11,6 +11,7 @@ import AddAgency from "./AddAgency/AddAgency";
 import CustomerDetails from "./CustomerDetails/CustomerDetails";
 import CashierList from "./CashierList/CashierList";
 import Cashier from "./Cashier/Cashier";
+import XrayList from "./XrayList/XrayList";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
                     <Route exact path="/customerDetails" component={CustomerDetails}></Route>
                     <Route exact path="/cashierList" component={CashierList}></Route>
                     <Route exact path="/cashier" component={Cashier}></Route>
+                    <Route exact path="/xrayList" component={XrayList}></Route>
                     <Redirect exact to="/login" from="/"/>
                 </Switch>
             </ConnectedRouter>
