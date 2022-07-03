@@ -6,8 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface CustomerRepository extends CrudRepository<Customer, Integer> {
 
     @Query("SELECT customer FROM Customer customer WHERE customer.customer_full_name LIKE CONCAT('%',:name,'%')")
-    public User getCustomerByCustomerName(@Param("name") String name);
+    public List<Customer> getCustomerByCustomerName(@Param("name") String name);
 }

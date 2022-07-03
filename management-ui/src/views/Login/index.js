@@ -19,6 +19,7 @@ export const loginSlice = createSlice({
             state.isLoginSuccess = false
         })
         builder.addCase(loginThunk.fulfilled, (state, action) => {
+            localStorage.setItem("login_token", action.payload.token)
             let decodedToken = jwt_decode(action.payload.token);
             state.user = {
                 username: decodedToken.username,

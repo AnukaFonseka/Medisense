@@ -8,15 +8,6 @@ function getApiServerUrl() {
     }
 }
 
-// export async function login(username, password) {
-//     const resp = await fetch(getApiServerUrl() + '/login', {
-//         method: 'POST',
-//         headers: 'Content-Type: application/x-www-form-urlencoded',
-//         body: {username, password}
-//     })
-//     return await resp.json()
-// }
-
 export const loginThunk = createAsyncThunk('user/loginUser', async (payload) => {
     const {username, password} = payload
     return await fetch('http://127.0.0.1:8082/loginUser', {
@@ -28,5 +19,17 @@ export const loginThunk = createAsyncThunk('user/loginUser', async (payload) => 
             'password': password
         })
     }).then((res) => res.json()).then((res) => res)
+})
+
+export const customerThunk = createAsyncThunk('customer/createCustomer', async (payload) => {
+
+    return await fetch('http://127.0.0.1:8082/customers/addCustomer', {
+        method: 'POST',
+        headers: new Headers({
+            'Authorization': 'Bearer '+ localStorage.getItem("login_token"),
+            'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify(payload)
+    })
 })
 

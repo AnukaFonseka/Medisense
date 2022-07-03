@@ -1,5 +1,7 @@
 package com.medisense.apiserver.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -22,8 +24,10 @@ public class Customer {
 
     private String customer_contact_no;
 
+    @JsonFormat(pattern = "yyyy/MM/dd")
     private Date customer_dob;
 
+    @JsonFormat(pattern = "yyyy/MM/dd")
     private Date customer_reg_date;
 
     private String customer_nic;
@@ -32,6 +36,7 @@ public class Customer {
 
     private String customer_passport_no;
 
+    @JsonFormat(pattern = "yyyy/MM/dd")
     private Date customer_pp_issued_date;
 
     private String customer_pp_issued_place;
@@ -46,6 +51,13 @@ public class Customer {
 
     private String customer_last_meal_time_rfrd_by;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getCus_ref_no() {
         return cus_ref_no;
@@ -181,5 +193,29 @@ public class Customer {
 
     public void setCustomer_last_meal_time_rfrd_by(String customer_last_meal_time_rfrd_by) {
         this.customer_last_meal_time_rfrd_by = customer_last_meal_time_rfrd_by;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", cus_ref_no=" + cus_ref_no +
+                ", customer_salutation='" + customer_salutation + '\'' +
+                ", customer_full_name='" + customer_full_name + '\'' +
+                ", customer_address='" + customer_address + '\'' +
+                ", customer_contact_no='" + customer_contact_no + '\'' +
+                ", customer_dob=" + customer_dob +
+                ", customer_reg_date=" + customer_reg_date +
+                ", customer_nic='" + customer_nic + '\'' +
+                ", customer_civil_status='" + customer_civil_status + '\'' +
+                ", customer_passport_no='" + customer_passport_no + '\'' +
+                ", customer_pp_issued_date=" + customer_pp_issued_date +
+                ", customer_pp_issued_place='" + customer_pp_issued_place + '\'' +
+                ", customer_agency='" + customer_agency + '\'' +
+                ", customer_job_title='" + customer_job_title + '\'' +
+                ", customer_country='" + customer_country + '\'' +
+                ", customer_last_meal_time=" + customer_last_meal_time +
+                ", customer_last_meal_time_rfrd_by='" + customer_last_meal_time_rfrd_by + '\'' +
+                '}';
     }
 }

@@ -1,8 +1,36 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./gcc.css"
 import {NavLink} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {customerThunk} from "../../apiCalls/apiCalls";
 
 const GCC = () => {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        let customer = {
+            id: 0,
+            cus_ref_no: 1000,
+            customer_salutation: "Mr",
+            customer_full_name : "Anuka",
+            customer_address: "",
+            customer_contact_no: "",
+            customer_dob: "1998/10/02",
+            customer_reg_date: "2022/06/23",
+            customer_nic: "",
+            customer_civil_status: "",
+            customer_passport_no: "",
+            customer_pp_issued_date: "",
+            customer_pp_issued_place: "",
+            customer_agency: "",
+            customer_job_title: "",
+            customer_country: "",
+            customer_last_meal_time: "",
+            customer_last_meal_time_rfrd_by: ""
+        }
+        dispatch(customerThunk(customer));
+    }, [])
+
     return(
         <div>
             <nav aria-label="breadcrumb" className="navbar">
