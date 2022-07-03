@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 import {loginThunk} from "../../apiCalls/apiCalls";
+import jwt_decode from "jwt-decode";
 
 const initialState = {
     isLoginPending: false,
@@ -18,7 +19,13 @@ export const loginSlice = createSlice({
             state.isLoginSuccess = false
         })
         builder.addCase(loginThunk.fulfilled, (state, action) => {
-            state.user = action.payload
+            let decodedToken = jwt_decode(action.payload.token);
+            state.user = {
+                username: decodedToken.username,
+                name: decodedToken.sub,
+                roles: decodedToken.roles,
+                token: action.payload.token
+            }
             state.isLoginPending = false
             if(action.payload.status === '200') {
                 state.isLoginSuccess = true
