@@ -36,4 +36,28 @@ CREATE TABLE `user_roles`
     CONSTRAINT `fk_user_roles_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `customer`
+(
+    `id` bigint(20) NOT NULL AUTO_INCREMENT,
+    `cus_ref_no` bigint(20) NOT NULL,
+    `customer_salutation` VARCHAR(10) NOT NULL ,
+    `customer_full_name` VARCHAR(250) NOT NULL,
+    `customer_address` VARCHAR(250),
+    `customer_contact_no` INTEGER(11),
+    `customer_dob` DATE NOT NULL,
+    `customer_reg_date` DATE NOT NULL,
+    `customer_nic` bigint(20),
+    `customer_civil_status` VARCHAR(30),
+    `customer_passport_no` bigint(20),
+    `customer_pp_issued_date` DATE,
+    `customer_pp_issued_place` VARCHAR(30),
+    `customer_agency` VARCHAR(100),
+    `customer_job_title` VARCHAR(150),
+    `customer_country` VARCHAR(150),
+    `customer_last_meal_time` DATETIME,
+    `customer_last_meal_time_rfrd_by` VARCHAR(150),
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `uk_customer_ref_no` (`cus_ref_no`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 INSERT INTO `user_roles` (`user_id`, `role_id`) values (1, 4);
