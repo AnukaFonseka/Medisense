@@ -7,7 +7,7 @@ const Lab = () => {
         <div className="main--container">
             <form className="formm">
                 <div className="common__info">
-                    <h1>Mini Lab</h1>
+                    <h1>Lab</h1>
                 </div>
                 <br/>
                 <div className="common__info">
