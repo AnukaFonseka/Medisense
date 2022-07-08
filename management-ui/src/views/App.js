@@ -13,6 +13,7 @@ import CashierList from "./CashierList/CashierList";
 import Cashier from "./Cashier/Cashier";
 import XrayList from "./XrayList/XrayList";
 import Xray from "./Xray/Xray";
+import MiniLab from "./MiniLab/MiniLab";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
                     <Route exact path="/cashier" component={Cashier}></Route>
                     <Route exact path="/xrayList" component={XrayList}></Route>
                     <Route exact path="/xray" component={Xray}></Route>
+                    <Route exact path="/miniLab" component={MiniLab}></Route>
                     <Redirect exact to="/login" from="/"/>
                 </Switch>
             </ConnectedRouter>
