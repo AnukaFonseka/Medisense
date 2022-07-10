@@ -24,10 +24,10 @@ public class Customer {
 
     private String customer_contact_no;
 
-    @JsonFormat(pattern = "yyyy/MM/dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date customer_dob;
 
-    @JsonFormat(pattern = "yyyy/MM/dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date customer_reg_date;
 
     private String customer_nic;
@@ -36,7 +36,7 @@ public class Customer {
 
     private String customer_passport_no;
 
-    @JsonFormat(pattern = "yyyy/MM/dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date customer_pp_issued_date;
 
     private String customer_pp_issued_place;
@@ -47,6 +47,7 @@ public class Customer {
 
     private String customer_country;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date customer_last_meal_time;
 
     private String customer_last_meal_time_rfrd_by;

@@ -12,4 +12,6 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer> {
 
     @Query("SELECT customer FROM Customer customer WHERE customer.customer_full_name LIKE CONCAT('%',:name,'%')")
     public List<Customer> getCustomerByCustomerName(@Param("name") String name);
+
+
 }
