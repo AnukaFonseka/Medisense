@@ -1,14 +1,27 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./TestDetails.css"
 import {NavLink} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {customerSelector, setIsCustomerUpdated} from "../CustomerDetails";
 
 const TestDetails = () => {
+    const dispatch = useDispatch()
+    const {selectedCustomer, isCustomerUpdated} =  useSelector(customerSelector)
+    useEffect(() => {
+        dispatch(setIsCustomerUpdated(false))
+    },[])
+
     return(
+
         <div>
             <nav aria-label="breadcrumb" className="navbar">
                 <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="receptionHome">Home</a></li>
-                    <li className="breadcrumb-item"><a href="GCC">GCC</a></li>
+                    <li className="breadcrumb-item">
+                        <NavLink to="/receptionHome"> Home </NavLink>
+                    </li>
+                    <li className="breadcrumb-item">
+                        <NavLink to="/GCC"> GCC </NavLink>
+                    </li>
                     <li className="breadcrumb-item active" aria-current="page">Test Details</li>
                 </ol>
             </nav>

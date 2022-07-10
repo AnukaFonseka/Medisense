@@ -1,176 +1,237 @@
 import React, {useEffect} from "react";
 import "./gcc.css"
-import {NavLink} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {customerThunk} from "../../apiCalls/apiCalls";
+import {NavLink, useHistory, useLocation} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {addCustomerThunk, updateCustomerThunk} from "../../apiCalls/apiCalls";
+import {Formik, Form, Field} from "formik";
+import * as Yup from 'yup';
+import {customerSelector} from "../CustomerDetails";
 
 const GCC = () => {
     const dispatch = useDispatch()
+    const {selectedCustomer, isCustomerUpdated} =  useSelector(customerSelector)
+    const history = useHistory();
+
+    console.log(selectedCustomer)
 
     useEffect(() => {
-        let customer = {
-            id: 0,
-            cus_ref_no: 1000,
-            customer_salutation: "Mr",
-            customer_full_name : "Anuka",
-            customer_address: "",
-            customer_contact_no: "",
-            customer_dob: "1998/10/02",
-            customer_reg_date: "2022/06/23",
-            customer_nic: "",
-            customer_civil_status: "",
-            customer_passport_no: "",
-            customer_pp_issued_date: "",
-            customer_pp_issued_place: "",
-            customer_agency: "",
-            customer_job_title: "",
-            customer_country: "",
-            customer_last_meal_time: "",
-            customer_last_meal_time_rfrd_by: ""
+        if(isCustomerUpdated) {
+            history.push('/testDetails')
         }
-        dispatch(customerThunk(customer));
-    }, [])
+    },[selectedCustomer, isCustomerUpdated])
 
-    return(
+    const CustomerSchema = Yup.object().shape({
+        cus_ref_no: Yup.number()
+            .required('Reference Number is Required'),
+        customer_salutation: Yup.string()
+            .required('Salutation is required'),
+        customer_full_name: Yup.string()
+            .required('Full name is required'),
+        customer_reg_date: Yup.date()
+            .max(new Date(), 'Please choose a valid registered date')
+            .required('Registered Date is required'),
+        customer_dob: Yup.date()
+            .max(new Date(), 'Please choose a valid date of birth')
+            .required('Date of birth is required'),
+            // .test("DOB", "Please choose a valid date of birth", (value) => {
+            //     return moment().diff(moment(value), "day") >= 0;
+            // })
+        // email: Yup.string().email('Invalid email').required('Required'),
+    });
+
+    return (
         <div>
             <nav aria-label="breadcrumb" className="navbar">
                 <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="receptionHome">Home</a></li>
+                    <li className="breadcrumb-item">
+                        <NavLink to="/receptionHome"> Home </NavLink>
+                    </li>
                     <li className="breadcrumb-item active" aria-current="page">GCC</li>
                 </ol>
             </nav>
-        <div className="main__container">
-            <form className="form">
-                <div className="common__info">
-                    <h1>Applicant Details</h1>
+            <div className="main__container">
+                <Formik
+                    initialValues={selectedCustomer}
+                    onSubmit={async (values) => {
+                        if(selectedCustomer.cus_ref_no === ""){
+                            dispatch(addCustomerThunk(values));
+                        } else {
+                            dispatch(updateCustomerThunk(values))
+                        }
+                    }}
+                    validationSchema={CustomerSchema}
+                >
+                    {({errors, touched}) => (
+                        <Form className="form">
+                            <div className="common__info">
+                                <h1>Applicant Details</h1>
 
-                </div>
-                <br/>
-
-                <div className="common__info">
-                    <div className="common__info__wrap">
-                        <div className="common__info__details">
-                            <div className="row">
-                                <div className="col">
-                                    <label htmlFor="id">ID</label>
-                                    <input className="form-control" type="text" id="id" name="id"/>
-                                </div>
-                                <div className="col">
-                                    <label htmlFor="date">Register Date</label>
-                                    <input className="form-control" type="date" id="date" name="date"/>
-                                </div>
                             </div>
+                            <br/>
 
-                            <div className="row">
-                                <div className="col-md-2">
-                                    <label htmlFor="name">Title</label>
-                                    <select className="form-select form-select__title">
-                                        <option selected></option>
-                                        <option value="1">Mr</option>
-                                        <option value="2">Mrs</option>
-                                        <option value="3">Ms</option>
-                                    </select>
-                                </div>
-                                <div className="col">
-                                    <label htmlFor="name">Full Name</label>
-                                    <input className="form-control" type="text" id="name" name="name"/>
-                                </div>
-                            </div>
+                            <div className="common__info">
+                                <div className="common__info__wrap">
+                                    <div className="common__info__details">
+                                        <div className="row">
+                                            <div className="col">
+                                                <label htmlFor="id">ID</label>
+                                                <Field className="form-control" type="text" id="cus_ref_no"
+                                                       name="cus_ref_no"/>
+                                                {errors.cus_ref_no && touched.cus_ref_no ? (
+                                                    <div className="error_message">{errors.cus_ref_no}</div>
+                                                ) : null}
+                                            </div>
+                                            <div className="col">
+                                                <label htmlFor="date">Register Date</label>
+                                                <Field className="form-control" type="date" id="date"
+                                                       name="customer_reg_date"/>
+                                                {errors.customer_reg_date && touched.customer_reg_date ? (
+                                                    <div className="error_message">{errors.customer_reg_date}</div>
+                                                ) : null}
+                                            </div>
+                                        </div>
 
-                            <div className="row">
-                                <div className="col">
-                                    <label htmlFor="date">Date of Birth</label>
-                                    <input className="form-control" type="date" id="dob" name="dob"/>
-                                </div>
-                                <div className="col">
-                                    <label htmlFor="mobile">Mobile No</label>
-                                    <input className="form-control" type="text" id="mobile" name="mobile"/>
-                                </div>
-                            </div>
-                        </div>
+                                        <div className="row">
+                                            <div className="col-md-2">
+                                                <label htmlFor="name">Title</label>
+                                                <Field as="select" defaultValue={selectedCustomer.customer_salutation}
+                                                       name="customer_salutation"
+                                                       className="form-select form-select__title">
+                                                    <option value="Mr">Mr</option>
+                                                    <option value="Mrs">Mrs</option>
+                                                    <option value="Ms">Ms</option>
+                                                </Field>
+                                                {errors.customer_salutation && touched.customer_salutation ? (
+                                                    <div className="error_message">{errors.customer_salutation}</div>
+                                                ) : null}
+                                            </div>
+                                            <div className="col">
+                                                <label htmlFor="name">Full Name</label>
+                                                <Field className="form-control" type="text" id="name"
+                                                       name="customer_full_name"/>
+                                                {errors.customer_full_name && touched.customer_full_name ? (
+                                                    <div className="error_message">{errors.customer_full_name}</div>
+                                                ) : null}
+                                            </div>
+                                        </div>
 
-                        <div className="common__info__image">
-                            <img src={require("../Reception/images/1.png")} alt="" width="200px" height="200px"/>
-                        </div>
+                                        <div className="row">
+                                            <div className="col">
+                                                <label htmlFor="date">Date of Birth</label>
+                                                <Field className="form-control" type="date" id="dob"
+                                                       name="customer_dob"/>
+                                                {errors.customer_dob && touched.customer_dob ? (
+                                                    <div className="error_message">{errors.customer_dob}</div>
+                                                ) : null}
+                                            </div>
+                                            <div className="col">
+                                                <label htmlFor="mobile">Mobile No</label>
+                                                <Field className="form-control" type="text" id="mobile"
+                                                       name="customer_contact_no"/>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                    </div>
-                </div>
-                <br/>
-                <div className="common__info">
-                    <div className="common__info__wrap">
-                        <div className="common__info__details">
-                            <div className="row">
-                                <div className="col">
-                                    <label htmlFor="NIC">NIC</label>
-                                    <input className="form-control" type="text" id="NIC" name="NIC"/>
-                                </div>
-                                <div className="col">
-                                    <label htmlFor="cStatus">Civil Status</label>
-                                    <select className="form-select">
-                                        <option selected></option>
-                                        <option value="1">Married</option>
-                                        <option value="2">Single</option>
-                                        <option value="3">Widowed</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div className="row">
-                                <div className="col">
-                                    <label htmlFor="passport">Passport</label>
-                                    <input className="form-control" type="text" id="passport" name="passport"/>
-                                </div>
-                                <div className="col">
-                                    <label htmlFor="issuedDate">Issued Date</label>
-                                    <input className="form-control" type="text" id="issuedDate" name="issuedDate"/>
-                                </div>
-                                <div className="col">
-                                    <label htmlFor="place">Place</label>
-                                    <input className="form-control" type="text" id="place" name="place"/>
-                                </div>
-                            </div>
-
-                            <div className="row">
-                                <div className="col agencyCol">
-                                    <label htmlFor="agency">Agency</label>
-                                    <div className="agencyDiv">
-                                        <select className="form-select select__agency">
-                                            <option selected></option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                        </select>
-                                        <NavLink to = "/addAgency" className = "btn__agency btn btn-secondary " >Add</NavLink>
+                                    <div className="common__info__image">
+                                        <img src={require("../Reception/images/1.png")} alt="" width="200px"
+                                             height="200px"/>
                                     </div>
 
                                 </div>
-                                <div className="col">
-                                    <label htmlFor="job">Job Title</label>
-                                    <select className="form-select">
-                                        <option selected></option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select>
-                                </div>
-                                <div className="col">
-                                    <label htmlFor="country">Country</label>
-                                    <select className="form-select">
-                                        <option selected></option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select>
+                            </div>
+                            <br/>
+                            <div className="common__info">
+                                <div className="common__info__wrap">
+                                    <div className="common__info__details">
+                                        <div className="row">
+                                            <div className="col">
+                                                <label htmlFor="NIC">NIC</label>
+                                                <Field className="form-control" type="text" id="NIC"
+                                                       name="customer_nic"/>
+                                            </div>
+                                            <div className="col">
+                                                <label htmlFor="cStatus">Civil Status</label>
+                                                <Field as="select" defaultValue={selectedCustomer.customer_civil_status}
+                                                       name="customer_civil_status"
+                                                       className="form-select">
+                                                    <option selected></option>
+                                                    <option value="Married">Married</option>
+                                                    <option value="Single">Single</option>
+                                                    <option value="Widowed">Widowed</option>
+                                                </Field>
+                                            </div>
+                                        </div>
+
+                                        <div className="row">
+                                            <div className="col">
+                                                <label htmlFor="passport">Passport</label>
+                                                <Field className="form-control" type="text" id="passport"
+                                                       name="customer_passport_no"/>
+                                            </div>
+                                            <div className="col">
+                                                <label htmlFor="issuedDate">Issued Date</label>
+                                                <Field className="form-control" type="date" id="date"
+                                                       name="customer_pp_issued_date"/>
+                                                {errors.customer_pp_issued_date && touched.customer_pp_issued_date ? (
+                                                    <div className="error_message">{errors.customer_pp_issued_date}</div>
+                                                ) : null}
+                                            </div>
+                                            <div className="col">
+                                                <label htmlFor="place">Place</label>
+                                                <Field className="form-control" type="text" id="place"
+                                                       name="customer_pp_issued_place"/>
+                                            </div>
+                                        </div>
+
+                                        <div className="row">
+                                            <div className="col agencyCol">
+                                                <label htmlFor="agency">Agency</label>
+                                                <div className="agencyDiv">
+                                                    <Field as="select" defaultValue={selectedCustomer.customer_agency}
+                                                           name="customer_agency"
+                                                           className="form-select select__agency">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                    </Field>
+                                                    <NavLink to="/addAgency"
+                                                             className="btn__agency btn btn-secondary ">Add</NavLink>
+                                                </div>
+
+                                            </div>
+                                            <div className="col">
+                                                <label htmlFor="job">Job Title</label>
+                                                <Field as="select" defaultValue={selectedCustomer.customer_job_title}
+                                                       name="customer_job_title"
+                                                       className="form-select">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </Field>
+                                            </div>
+                                            <div className="col">
+                                                <label htmlFor="country">Country</label>
+                                                <Field as="select" defaultValue={selectedCustomer.customer_country}
+                                                       name="customer_country"
+                                                       className="form-select">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </Field>
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" className="btn btn-primary mb-2"> Save</button>
+                                        {/*<NavLink to="/testDetails" className="btn btn-primary mb-2"> Save </NavLink>*/}
+
+                                    </div>
                                 </div>
                             </div>
+                        </Form>
+                    )}
 
-                            <NavLink to = "/testDetails" className = "btn btn-primary mb-2" > Save </NavLink>
-
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
+                </Formik>
+            </div>
         </div>
     )
 }

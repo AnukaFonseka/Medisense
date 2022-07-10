@@ -13,12 +13,15 @@ import CashierList from "./CashierList/CashierList";
 import Cashier from "./Cashier/Cashier";
 import XrayList from "./XrayList/XrayList";
 import Xray from "./Xray/Xray";
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer} from "react-notifications";
 
 function App() {
 
     return (
         <div className="App">
             <ConnectedRouter history={history}>
+                <NotificationContainer/>
                 <Switch>
                     <Route exact path="/login" component={Login}></Route>
                     <Route exact path="/receptionHome" component={ReceptionHome}></Route>
