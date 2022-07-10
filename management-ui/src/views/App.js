@@ -13,6 +13,9 @@ import CashierList from "./CashierList/CashierList";
 import Cashier from "./Cashier/Cashier";
 import XrayList from "./XrayList/XrayList";
 import Xray from "./Xray/Xray";
+import MiniLab from "./MiniLab/MiniLab";
+import Lab from "./Lab/Lab";
+import LabValues from "./LabValues/LabValues";
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer} from "react-notifications";
 
@@ -25,8 +28,8 @@ function App() {
                 <Switch>
                     <Route exact path="/login" component={Login}></Route>
                     <Route exact path="/receptionHome" component={ReceptionHome}></Route>
-                    <Route exact path="/GCC" component={GCC}></Route>
-                    <Route exact path="/OPD" component={OPD}></Route>
+                    <Route exact path="/gcc" component={GCC}></Route>
+                    <Route exact path="/opd" component={OPD}></Route>
                     <Route exact path="/testDetails" component={TestDetails}></Route>
                     <Route exact path="/addAgency" component={AddAgency}></Route>
                     <Route exact path="/customerDetails" component={CustomerDetails}></Route>
@@ -34,6 +37,9 @@ function App() {
                     <Route exact path="/cashier" component={Cashier}></Route>
                     <Route exact path="/xrayList" component={XrayList}></Route>
                     <Route exact path="/xray" component={Xray}></Route>
+                    <Route exact path="/miniLab" component={MiniLab}></Route>
+                    <Route exact path="/lab" component={Lab}></Route>
+                    <Route exact path="/labValues" component={LabValues}></Route>
                     <Redirect exact to="/login" from="/"/>
                 </Switch>
             </ConnectedRouter>

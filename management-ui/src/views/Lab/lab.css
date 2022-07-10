@@ -76,13 +76,17 @@ h1{
     margin-right: 25px!important;
 }
 
-.category-container-xray {
+.mark__btn {
+    width: 225px;
+}
+
+.category-container-minilab {
     padding-top: 30px;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
+    padding-left: 50px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .category-box {
@@ -111,10 +115,17 @@ h1{
     border-radius: 0.25rem;
 }
 
-.form--select-1 {
+.form--select-2 {
     color: black !important;
-    width: 350px !important;
+    width: 225px !important;
     height: 40px !important;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
+    margin-left: 300px;
+}
+
+.minilab-btns {
+    display: flex;
+    padding-left: 50px;
+    padding-bottom: 30px ;
 }
