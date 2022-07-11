@@ -1,15 +1,28 @@
 import React from "react";
 import "./customerDetails.css";
+import {NavLink} from "react-router-dom";
+import {Field, Formik} from "formik";
+import {useSelector} from "react-redux";
+import {customerSelector} from "../CustomerDetails";
 
 const CustomerDetails = () => {
+
+    const {selectedCustomer} =  useSelector(customerSelector)
+
+    console.log(selectedCustomer)
+
     return(
         <div>
             <nav aria-label="breadcrumb" className="navbar">
                 <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="receptionHome">Home</a></li>
+                    <li className="breadcrumb-item">
+                        <NavLink to="/receptionHome"> Home </NavLink>
+                    </li>
                     <li className="breadcrumb-item active" aria-current="page">Customer Details</li>
                 </ol>
             </nav>
+
+            <Formik initialValues={selectedCustomer}>
             <div className="main__container__customer">
                 <form className="form">
                     <div className="common__info">
@@ -24,11 +37,12 @@ const CustomerDetails = () => {
                                 <div className="row">
                                     <div className="col">
                                         <label htmlFor="id">ID</label>
-                                        <input className="form-control" type="text" value={123} id="id" name="id" readOnly/>
+                                        <Field className="form-control" type="text" id="cus_ref_no"
+                                               name="cus_ref_no" readOnly/>
                                     </div>
                                     <div className="col">
                                         <label htmlFor="date">Register Date</label>
-                                        <input className="form-control" type="date" id="date" name="date" readOnly/>
+                                        <Field className="form-control" type="text" id="issuedDate" name="customer_reg_date" readOnly/>
                                     </div>
                                 </div>
 
@@ -36,18 +50,20 @@ const CustomerDetails = () => {
 
                                     <div className="col">
                                         <label htmlFor="name">Full Name</label>
-                                        <input className="form-control" type="text" id="name" name="name" readOnly/>
+                                        <Field className="form-control" type="text" id="name"
+                                               name="customer_full_name" readOnly/>
                                     </div>
                                 </div>
 
                                 <div className="row">
                                     <div className="col">
                                         <label htmlFor="date">Date of Birth</label>
-                                        <input className="form-control" type="date" id="dob" name="dob" readOnly/>
+                                        <Field className="form-control" type="text" id="issuedDate" name="customer_dob" readOnly/>
                                     </div>
                                     <div className="col">
                                         <label htmlFor="mobile">Mobile No</label>
-                                        <input className="form-control" type="text" id="mobile" name="mobile" readOnly/>
+                                        <Field className="form-control" type="text" id="mobile"
+                                               name="customer_contact_no" readOnly/>
                                     </div>
                                 </div>
                             </div>
@@ -65,41 +81,44 @@ const CustomerDetails = () => {
                                 <div className="row">
                                     <div className="col">
                                         <label htmlFor="NIC">NIC</label>
-                                        <input className="form-control" type="text" id="NIC" name="NIC" readOnly/>
+                                        <Field className="form-control" type="text" id="NIC"
+                                               name="customer_nic" readOnly/>
                                     </div>
                                     <div className="col">
                                         <label htmlFor="cStatus">Civil Status</label>
-                                        <input className="form-control" type="text" id="cStatus" name="cStatus" readOnly/>
+                                        <Field className="form-control" type="text" id="cStatus" name="customer_civil_status" readOnly/>
                                     </div>
                                 </div>
 
                                 <div className="row">
                                     <div className="col">
                                         <label htmlFor="passport">Passport</label>
-                                        <input className="form-control" type="text" id="passport" name="passport" readOnly/>
+                                        <Field className="form-control" type="text" id="passport"
+                                               name="customer_passport_no" readOnly/>
                                     </div>
                                     <div className="col">
                                         <label htmlFor="issuedDate">Issued Date</label>
-                                        <input className="form-control" type="text" id="issuedDate" name="issuedDate" readOnly/>
+                                        <Field className="form-control" type="text" id="issuedDate" name="customer_pp_issued_date" readOnly/>
                                     </div>
                                     <div className="col">
                                         <label htmlFor="place">Place</label>
-                                        <input className="form-control" type="text" id="place" name="place" readOnly/>
+                                        <Field className="form-control" type="text" id="place"
+                                               name="customer_pp_issued_place" readOnly/>
                                     </div>
                                 </div>
 
                                 <div className="row">
                                     <div className="col">
                                         <label htmlFor="agency">Agency</label>
-                                        <input className="form-control" type="text" id="agency" name="agency" readOnly/>
+                                        <Field className="form-control" type="text" id="agency" name="customer_agency" readOnly/>
                                     </div>
                                     <div className="col">
                                         <label htmlFor="job">Job Title</label>
-                                        <input className="form-control" type="text" id="jobTitle" name="jobTitle" readOnly/>
+                                        <Field className="form-control" type="text" id="jobTitle" name="customer_job_title" readOnly/>
                                     </div>
                                     <div className="col">
                                         <label htmlFor="country">Country</label>
-                                        <input className="form-control" type="text" id="country" name="country" readOnly/>
+                                        <Field className="form-control" type="text" id="country" name="customer_country" readOnly/>
                                     </div>
                                 </div>
 
@@ -150,6 +169,7 @@ const CustomerDetails = () => {
 
                 </form>
             </div>
+            </Formik>
         </div>
     )
 }
