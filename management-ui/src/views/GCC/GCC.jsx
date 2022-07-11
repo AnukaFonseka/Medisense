@@ -97,6 +97,7 @@ const GCC = () => {
                                                 <Field as="select" defaultValue={selectedCustomer.customer_salutation}
                                                        name="customer_salutation"
                                                        className="form-select form-select__title">
+                                                    <option selected></option>
                                                     <option value="Mr">Mr</option>
                                                     <option value="Mrs">Mrs</option>
                                                     <option value="Ms">Ms</option>
@@ -190,6 +191,7 @@ const GCC = () => {
                                                     <Field as="select" defaultValue={selectedCustomer.customer_agency}
                                                            name="customer_agency"
                                                            className="form-select select__agency">
+                                                        <option selected></option>
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
                                                         <option value="3">3</option>
@@ -204,6 +206,7 @@ const GCC = () => {
                                                 <Field as="select" defaultValue={selectedCustomer.customer_job_title}
                                                        name="customer_job_title"
                                                        className="form-select">
+                                                    <option selected></option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -214,6 +217,7 @@ const GCC = () => {
                                                 <Field as="select" defaultValue={selectedCustomer.customer_country}
                                                        name="customer_country"
                                                        className="form-select">
+                                                    <option selected></option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>

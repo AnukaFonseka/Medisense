@@ -32,12 +32,13 @@ const ReceptionHome = () => {
     };
 
     return (
-        <div>
+        <div className="body">
             <nav className="navbar" aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item active" aria-current="page">Home</li>
                 </ol>
             </nav>
+            <div className="bg">
             <div className="home">
                 <div className="home__container">
 
@@ -106,6 +107,7 @@ const ReceptionHome = () => {
                     </div>
                     <br/>
                 </div>
+            </div>
             </div>
         </div>
     )

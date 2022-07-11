@@ -28,7 +28,7 @@ const XrayList = () => {
                                 <td> Sova </td>
                                 <td> 001 </td>
                                 <td style={{display:'flex', justifyContent: "center"}}>
-                                    <NavLink to = "/cashier" className = "btn btn-primary mb-2" style={{marginLeft: "20px"}} > View </NavLink>
+                                    <NavLink to = "/xray" className = "btn btn-primary mb-2" style={{marginLeft: "20px"}} > View </NavLink>
                                 </td>
                             </tr>
 
@@ -36,7 +36,7 @@ const XrayList = () => {
                                 <td> Skye </td>
                                 <td> 002 </td>
                                 <td style={{display:'flex', justifyContent: "center"}}>
-                                    <NavLink to = "/cashier" className = "btn btn-primary mb-2" style={{marginLeft: "20px"}} > View </NavLink>
+                                    <NavLink to = "/xray" className = "btn btn-primary mb-2" style={{marginLeft: "20px"}} > View </NavLink>
                                 </td>
                             </tr>
 
@@ -44,7 +44,7 @@ const XrayList = () => {
                                 <td> Fade </td>
                                 <td> 003 </td>
                                 <td style={{display:'flex', justifyContent: "center"}}>
-                                    <NavLink to = "/cashier" className = "btn btn-primary mb-2" style={{marginLeft: "20px"}} > View </NavLink>
+                                    <NavLink to = "/xray" className = "btn btn-primary mb-2" style={{marginLeft: "20px"}} > View </NavLink>
                                 </td>
                             </tr>
 
