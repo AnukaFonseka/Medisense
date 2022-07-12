@@ -1,13 +1,15 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit'
 import loginReducer from "../views/Login";
 import customerReducer from '../views/CustomerDetails'
+import agencyReducer from '../views/AddAgency'
 import {connectRouter, routerMiddleware} from "connected-react-router";
 import {history} from "../router/router";
 
 const rootReducer = (history) => combineReducers({
     router: connectRouter(history),
     login: loginReducer,
-    customer: customerReducer
+    customer: customerReducer,
+    agency: agencyReducer
 })
 
 const preloadedState = {};

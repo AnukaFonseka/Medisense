@@ -74,7 +74,7 @@ const GCC = () => {
                                     <div className="common__info__details">
                                         <div className="row">
                                             <div className="col">
-                                                <label htmlFor="id">ID</label>
+                                                <label htmlFor="id">Reference Number</label>
                                                 <Field className="form-control" type="text" id="cus_ref_no"
                                                        name="cus_ref_no"/>
                                                 {errors.cus_ref_no && touched.cus_ref_no ? (
@@ -203,6 +203,7 @@ const GCC = () => {
                                             </div>
                                             <div className="col">
                                                 <label htmlFor="job">Job Title</label>
+                                                <div className="agencyDiv">
                                                 <Field as="select" defaultValue={selectedCustomer.customer_job_title}
                                                        name="customer_job_title"
                                                        className="form-select">
@@ -211,6 +212,9 @@ const GCC = () => {
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
                                                 </Field>
+                                                <NavLink to="/addAgency"
+                                                         className="btn__agency btn btn-secondary ">Add</NavLink>
+                                                </div>
                                             </div>
                                             <div className="col">
                                                 <label htmlFor="country">Country</label>

@@ -60,4 +60,19 @@ CREATE TABLE `customer`
     UNIQUE KEY `uk_customer_ref_no` (`cus_ref_no`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `agency_details`
+    (
+        `id` bigint(20) NOT NULL AUTO_INCREMENT,
+        `agency_name` VARCHAR(250) NOT NULL ,
+        `agency_address` VARCHAR(250) ,
+        `agency_contact_no` VARCHAR(20),
+        `agency_fax` VARCHAR(20),
+        `agency_email` VARCHAR(100),
+        `agency_contact_person` VARCHAR(250),
+        `agency_labour_licence` VARCHAR(100),
+        `agency_commission` VARCHAR(50),
+        PRIMARY KEY (`id`),
+        UNIQUE KEY `uk_agency_details_agency_name` (`agency_name`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 INSERT INTO `user_roles` (`user_id`, `role_id`) values (1, 4);
