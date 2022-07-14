@@ -24,14 +24,14 @@ public class AgencyController {
     public AgencyController(AgencyService agencyService){ this.agencyService = agencyService;}
 
     @PostMapping(path = "addAgency", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
-    @PreAuthorize("hasRole('ROLE ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public HttpResult saveAgencyToDb(@RequestBody Agency agency) {
         logger.info("Create Agency request recieved [{}]", agency);
         return agencyService.saveAgencyToDb(agency);
     }
 
     @GetMapping(path = "getAgencies")
-    @PreAuthorize("hasRole('ROLE ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<Agency> getAgenciesByName(@RequestParam String agencyName) {
         logger.info("Find Agency by name request recieved [{}]", agencyName);
         return agencyService.getAgencyByAgencyName(agencyName);
