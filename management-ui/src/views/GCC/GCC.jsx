@@ -2,17 +2,42 @@ import React, {useEffect} from "react";
 import "./gcc.css"
 import {NavLink, useHistory, useLocation} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {addCustomerThunk, updateCustomerThunk} from "../../apiCalls/apiCalls";
+import {addCustomerThunk, findAgencyByNameThunk, updateCustomerThunk} from "../../apiCalls/apiCalls";
 import {Formik, Form, Field} from "formik";
 import * as Yup from 'yup';
 import {customerSelector} from "../CustomerDetails";
+import {agencySelector, setIsAgencyUpdated, setSelectedAgency} from "../AddAgency";
+import {Async} from "react-select-virtualized";
 
 const GCC = () => {
     const dispatch = useDispatch()
     const {selectedCustomer, isCustomerUpdated} =  useSelector(customerSelector)
+    const { AgenciesByNameList, isAgencyFindByNameLoading, isAgencyUpdated} = useSelector(agencySelector)
     const history = useHistory();
 
     console.log(selectedCustomer)
+
+    useEffect(() => {
+        dispatch(setIsAgencyUpdated(false))
+    },[])
+
+    const handleSelected = (val) => {
+        let agency = AgenciesByNameList.filter((agency) => {return agency.agency_name === val.value})[0]
+        console.log(agency)
+        dispatch(setSelectedAgency(agency))
+    }
+
+    const loadOptions = (input, callback) => {
+        let payLoad = {agencyName: input}
+        dispatch(findAgencyByNameThunk(payLoad))
+
+        if(!isAgencyFindByNameLoading){
+            let newAgencies = AgenciesByNameList.map((agency) => {
+                return {label: agency.agency_name, value: agency.agency_name}
+            })
+            callback(newAgencies)
+        }
+    }
 
     useEffect(() => {
         if(isCustomerUpdated) {
@@ -188,14 +213,15 @@ const GCC = () => {
                                             <div className="col agencyCol">
                                                 <label htmlFor="agency">Agency</label>
                                                 <div className="agencyDiv">
-                                                    <Field as="select" defaultValue={selectedCustomer.customer_agency}
-                                                           name="customer_agency"
-                                                           className="form-select select__agency">
-                                                        <option selected></option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                    </Field>
+                                                    <Async
+                                                        defaultValue={selectedCustomer.customer_agency}
+                                                        className="select__agency"
+                                                        placeholder="Search agency..."
+                                                        isLoading={isAgencyFindByNameLoading}
+                                                        options={AgenciesByNameList}
+                                                        onChange={(e) => handleSelected(e)}
+                                                        loadOptions={loadOptions}
+                                                    />
                                                     <NavLink to="/addAgency"
                                                              className="btn__agency btn btn-secondary ">Add</NavLink>
                                                 </div>
@@ -228,6 +254,7 @@ const GCC = () => {
                                                 </Field>
                                             </div>
                                         </div>
+                                        <br/>
 
                                         <button type="submit" className="btn btn-primary mb-2"> Save</button>
                                         {/*<NavLink to="/testDetails" className="btn btn-primary mb-2"> Save </NavLink>*/}

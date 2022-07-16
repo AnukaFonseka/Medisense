@@ -1,12 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {addAgencyThunk, addCustomerThunk, findCustomerByNameThunk, updateCustomerThunk} from "../../apiCalls/apiCalls";
+import {addAgencyThunk, findAgencyByNameThunk} from "../../apiCalls/apiCalls";
 import {NotificationContainer, NotificationManager} from 'react-notifications';
-import {customerSlice} from "../CustomerDetails";
 
 
 const initialState = {
     isAgencyUpdated: false,
     AgenciesByNameList: [],
+    isAgencyFindByNameLoading: false,
     selectedAgency: {
         agency_name: "",
         agency_address: "",
@@ -40,6 +40,15 @@ export const agencySlice = createSlice({
                 NotificationManager.success("Successfully saved customer details")
                 state.isAgencyUpdated = true
             }
+        })
+
+        builder.addCase(findAgencyByNameThunk.pending, (state, action) => {
+            state.isAgencyFindByNameLoading = true
+        })
+        builder.addCase(findAgencyByNameThunk.fulfilled, (state, action) => {
+            state.isAgencyFindByNameLoading = false
+            state.AgenciesByNameList = action.payload
+
         })
     }
 })

@@ -3,16 +3,18 @@ import "./addAgency.css";
 import {useDispatch, useSelector} from "react-redux";
 import * as Yup from 'yup';
 import {Formik, Form, Field} from "formik";
-import {addAgencyThunk} from "../../apiCalls/apiCalls";
-import {agencySelector} from "./index";
+import {addAgencyThunk, findAgencyByNameThunk} from "../../apiCalls/apiCalls";
+import {agencySelector, setSelectedAgency} from "./index";
 import {useHistory} from "react-router-dom";
 
 
 const AddAgency = () => {
 
     const dispatch = useDispatch()
-    const {selectedAgency, isAgencyUpdated} = useSelector(agencySelector)
+    const {selectedAgency, isAgencyUpdated, AgenciesByNameList, isAgencyFindByNameLoading} = useSelector(agencySelector)
     const history = useHistory()
+
+
 
     useEffect(() => {
         if(isAgencyUpdated) {

@@ -55,6 +55,16 @@ export const findCustomerByNameThunk = createAsyncThunk('customer/findCustomerBy
     }).then((res) => res.json()).then((res) => res)
 })
 
+export const findAgencyByNameThunk = createAsyncThunk('customer/findCustomerByName', async (payload) => {
+    const {agencyName} = payload
+    return await fetch(`http://127.0.0.1:8082/agencies/getAgencies?agencyName=${agencyName}`, {
+        method: 'GET',
+        headers: new Headers({
+            'Authorization': 'Bearer '+ localStorage.getItem("login_token"),
+        }),
+    }).then((res) => res.json()).then((res) => res)
+})
+
 export const addAgencyThunk = createAsyncThunk('agency/createAgency', async (payload) => {
     return await fetch('http://127.0.0.1:8082/agencies/addAgency', {
         method: 'POST',
