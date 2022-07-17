@@ -1,46 +1,22 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import "./gcc.css"
 import {NavLink, useHistory, useLocation} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {addCustomerThunk, findAgencyByNameThunk, updateCustomerThunk} from "../../apiCalls/apiCalls";
 import {Formik, Form, Field} from "formik";
 import * as Yup from 'yup';
-import {customerSelector} from "../CustomerDetails";
-import {agencySelector, setIsAgencyUpdated, setSelectedAgency} from "../AddAgency";
-import {Async} from "react-select-virtualized";
+import {customerSelector, setSelectedCustomer} from "../CustomerDetails";
+import AsyncSelectFormik from "./AsyncSelect";
 
 const GCC = () => {
     const dispatch = useDispatch()
     const {selectedCustomer, isCustomerUpdated} =  useSelector(customerSelector)
-    const { AgenciesByNameList, isAgencyFindByNameLoading, isAgencyUpdated} = useSelector(agencySelector)
     const history = useHistory();
-
-    console.log(selectedCustomer)
-
-    useEffect(() => {
-        dispatch(setIsAgencyUpdated(false))
-    },[])
-
-    const handleSelected = (val) => {
-        let agency = AgenciesByNameList.filter((agency) => {return agency.agency_name === val.value})[0]
-        console.log(agency)
-        dispatch(setSelectedAgency(agency))
-    }
-
-    const loadOptions = (input, callback) => {
-        let payLoad = {agencyName: input}
-        dispatch(findAgencyByNameThunk(payLoad))
-
-        if(!isAgencyFindByNameLoading){
-            let newAgencies = AgenciesByNameList.map((agency) => {
-                return {label: agency.agency_name, value: agency.agency_name}
-            })
-            callback(newAgencies)
-        }
-    }
+    const [updatedCustomerValues, setUpdatedCustomerValues] = useState({});
 
     useEffect(() => {
         if(isCustomerUpdated) {
+            dispatch(setSelectedCustomer(updatedCustomerValues))
             history.push('/testDetails')
         }
     },[selectedCustomer, isCustomerUpdated])
@@ -79,8 +55,10 @@ const GCC = () => {
                     initialValues={selectedCustomer}
                     onSubmit={async (values) => {
                         if(selectedCustomer.cus_ref_no === ""){
+                            setUpdatedCustomerValues(values);
                             dispatch(addCustomerThunk(values));
                         } else {
+                            setUpdatedCustomerValues(values);
                             dispatch(updateCustomerThunk(values))
                         }
                     }}
@@ -213,15 +191,8 @@ const GCC = () => {
                                             <div className="col agencyCol">
                                                 <label htmlFor="agency">Agency</label>
                                                 <div className="agencyDiv">
-                                                    <Async
-                                                        defaultValue={selectedCustomer.customer_agency}
-                                                        className="select__agency"
-                                                        placeholder="Search agency..."
-                                                        isLoading={isAgencyFindByNameLoading}
-                                                        options={AgenciesByNameList}
-                                                        onChange={(e) => handleSelected(e)}
-                                                        loadOptions={loadOptions}
-                                                    />
+                                                    <Field as={AsyncSelectFormik}
+                                                           name="customer_agency" />
                                                     <NavLink to="/addAgency"
                                                              className="btn__agency btn btn-secondary ">Add</NavLink>
                                                 </div>
