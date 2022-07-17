@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {agencySelector} from "../AddAgency";
 import {customerSelector} from "../CustomerDetails";
 
-const AsyncSelectFormik = ({ ...props}) => {
+const AsyncAgencySelect = ({ ...props}) => {
     const dispatch = useDispatch()
     const [field, meta, helpers] = useField(props);
     const {AgenciesByNameList, isAgencyFindByNameLoading, isAgencyUpdated} = useSelector(agencySelector)
@@ -40,4 +40,4 @@ const AsyncSelectFormik = ({ ...props}) => {
     );
 };
 
-export default AsyncSelectFormik;
+export default AsyncAgencySelect;

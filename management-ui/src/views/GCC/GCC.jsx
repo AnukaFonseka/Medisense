@@ -6,7 +6,7 @@ import {addCustomerThunk, findAgencyByNameThunk, updateCustomerThunk} from "../.
 import {Formik, Form, Field} from "formik";
 import * as Yup from 'yup';
 import {customerSelector, setSelectedCustomer} from "../CustomerDetails";
-import AsyncSelectFormik from "./AsyncSelect";
+import AsyncAgencySelect from "./AsyncAgencySelect";
 
 const GCC = () => {
     const dispatch = useDispatch()
@@ -191,7 +191,7 @@ const GCC = () => {
                                             <div className="col agencyCol">
                                                 <label htmlFor="agency">Agency</label>
                                                 <div className="agencyDiv">
-                                                    <Field as={AsyncSelectFormik}
+                                                    <Field as={AsyncAgencySelect}
                                                            name="customer_agency" />
                                                     <NavLink to="/addAgency"
                                                              className="btn__agency btn btn-secondary ">Add</NavLink>
