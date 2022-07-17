@@ -7,6 +7,7 @@ import {Formik, Form, Field} from "formik";
 import * as Yup from 'yup';
 import {customerSelector, setSelectedCustomer} from "../CustomerDetails";
 import AsyncAgencySelect from "./AsyncAgencySelect";
+import { setIsAgencyUpdated} from "../AddAgency";
 
 const GCC = () => {
     const dispatch = useDispatch()
@@ -20,6 +21,10 @@ const GCC = () => {
             history.push('/testDetails')
         }
     },[selectedCustomer, isCustomerUpdated])
+
+    useEffect(() => {
+        dispatch(setIsAgencyUpdated(false))
+    },[])
 
     const CustomerSchema = Yup.object().shape({
         cus_ref_no: Yup.number()
