@@ -75,4 +75,13 @@ CREATE TABLE `agency_details`
         UNIQUE KEY `uk_agency_details_agency_name` (`agency_name`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `job_details`
+(
+    `id` bigint(20) NOT NULL AUTO_INCREMENT,
+    `job_name` VARCHAR(250) NOT NULL ,
+    `job_description` VARCHAR(250) ,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `uk_job_details_job_name` (`job_name`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 INSERT INTO `user_roles` (`user_id`, `role_id`) values (1, 4);

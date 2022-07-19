@@ -30,10 +30,12 @@ public class AgencyService {
             logger.info("Agency created by Agency ID [{}]", persistedAgency.getId());
             return new HttpResult("Success","S1000");
         } else {
-            logger.info("Create customer request failed");
+            logger.info("Create agency request failed");
             return new HttpResult("Error","E1000");
         }
     }
+
+
 
 
 }
