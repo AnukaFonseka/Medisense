@@ -1,22 +1,38 @@
 import React, {useEffect, useState} from 'react'
 import './receptionHome.css'
-import {Link, NavLink} from "react-router-dom";
+import {Link, NavLink, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {findCustomerByNameThunk} from "../../apiCalls/apiCalls";
 import {customerSelector} from "../CustomerDetails";
 import { Async } from "react-select-virtualized";
-import {setSelectedCustomer} from '../CustomerDetails/index'
+import {setSelectedCustomer} from '../CustomerDetails/index';
+import {setSelectedRadioButton} from "../CustomerDetails";
 
 const ReceptionHome = () => {
     const dispatch = useDispatch()
-    const {customersByNameList, isCustomerFindByNameLoading, selectedCustomer} = useSelector(customerSelector)
+    const history = useHistory();
+    const {customersByNameList, isCustomerFindByNameLoading, selectedCustomer, selectedRadioButton} = useSelector(customerSelector)
 
-    console.log(selectedCustomer)
+    const handleRoute = () => {
+        if(selectedRadioButton === "GCC"){
+            history.push('/gcc')
+        }if(selectedRadioButton === "OPD"){
+            history.push('/opd')
+        }if(selectedRadioButton === "Non_GCC"){
+            history.push('/gcc')
+        }if(selectedRadioButton === "Repeat"){
+            history.push('/testDetails')
+        }
+    }
+
 
     const handleSelected = (val) => {
         let customer = customersByNameList.filter((customer) => {return customer.cus_ref_no === val.value})[0]
-        console.log(customer)
         dispatch(setSelectedCustomer(customer))
+    }
+
+    const handleChange = (val) => {
+        dispatch(setSelectedRadioButton(val.target.value))
     }
 
     const loadOptions = (input, callback) => {
@@ -72,29 +88,54 @@ const ReceptionHome = () => {
 
                     <div className="category__container">
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault"
-                                   id="flexRadioDefault1"/>
+                            <input
+                                className="form-check-input"
+                                type="radio"
+                                name="flexRadioDefault"
+                                id="flexRadioDefault1"
+                                value="GCC"
+                                checked={selectedRadioButton === 'GCC'}
+                                onChange={handleChange}
+                            />
                             <label className="form-check-label" htmlFor="flexRadioDefault1">
                                 GCC
                             </label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault"
-                                   id="flexRadioDefault2"/>
+                            <input className="form-check-input"
+                                   type="radio"
+                                   name="flexRadioDefault"
+                                   id="flexRadioDefault2"
+                                   value="Non_GCC"
+                                   checked={selectedRadioButton === 'Non_GCC'}
+                                   onChange={handleChange}
+                            />
                             <label className="form-check-label" htmlFor="flexRadioDefault2">
                                 Non GCC
                             </label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault"
-                                   id="flexRadioDefault3"/>
+                            <input className="form-check-input"
+                                   type="radio"
+                                   name="flexRadioDefault"
+                                   id="flexRadioDefault3"
+                                   value="OPD"
+                                   checked={selectedRadioButton === 'OPD'}
+                                   onChange={handleChange}
+                            />
                             <label className="form-check-label" htmlFor="flexRadioDefault3">
                                 OPD
                             </label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault"
-                                   id="flexRadioDefault4"/>
+                            <input className="form-check-input"
+                                   type="radio"
+                                   name="flexRadioDefault"
+                                   id="flexRadioDefault4"
+                                   value="Repeat"
+                                   checked={selectedRadioButton === 'Repeat'}
+                                   onChange={handleChange}
+                            />
                             <label className="form-check-label" htmlFor="flexRadioDefault4">
                                 Repeat
                             </label>
@@ -102,8 +143,9 @@ const ReceptionHome = () => {
                         {/*<Link to={{pathname: "/GCC", state: {customer: selectedCustomer}}}*/}
                         {/*      className="next__btn btn btn-primary"> Next </Link>*/}
 
-                        <Link to={{pathname: "/GCC"}}
-                              className="next__btn btn btn-primary"> Next </Link>
+                        {/*<Link to={{pathname: "/GCC"}}*/}
+                        {/*      className="next__btn btn btn-primary"> Next </Link>*/}
+                        <button onClick={handleRoute} className="btn btn-primary mb-2"> Next</button>
                     </div>
                     <br/>
                 </div>
