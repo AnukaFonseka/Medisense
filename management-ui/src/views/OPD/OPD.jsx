@@ -1,8 +1,40 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./opd.css"
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
+import * as Yup from 'yup';
+import {Field, Form, Formik} from "formik";
+import {useDispatch, useSelector} from "react-redux";
+import {customerSelector} from "../CustomerDetails";
+import {addCustomerThunk, updateCustomerThunk} from "../../apiCalls/apiCalls";
 
 const OPD = () => {
+    const {selectedCustomer, isCustomerUpdated} = useSelector(customerSelector);
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const [updatedCustomerValues, setUpdatedCustomerValues] = useState({});
+
+    useEffect(()=>{
+        if(isCustomerUpdated) {
+            dispatch(selectedCustomer(updatedCustomerValues))
+            history.push('./testDetails')
+        }
+    },[selectedCustomer, isCustomerUpdated])
+
+    const CustomerSchema = Yup.object().shape({
+       cus_ref_no: Yup.number()
+           .required('Reference Number is Required'),
+       customer_salutation: Yup.string()
+           .required('Salutation is required'),
+       customer_full_name: Yup.string()
+           .required('Full name is required'),
+       customer_reg_date: Yup.date()
+           .max(new Date(), 'Please choose a valid register date')
+           .required('Register date is required'),
+       customer_dob: Yup.date()
+           .max(new Date(), 'Please choose a valid date of birth')
+           .required('Date of birth is required'),
+    });
+
     return(
         <div>
             <nav aria-label="breadcrumb" className="navbar">
@@ -12,7 +44,21 @@ const OPD = () => {
                 </ol>
             </nav>
         <div className="main__container">
-            <form className="form">
+          <Formik
+              initialValues={selectedCustomer}
+              onSubmit={async (values) => {
+                  if(selectedCustomer.cus_ref_no === ""){
+                      setUpdatedCustomerValues(values);
+                      dispatch(addCustomerThunk(values));
+                  } else {
+                      setUpdatedCustomerValues(values);
+                      dispatch(updateCustomerThunk(values))
+                  }
+              }}
+              validationSchema={CustomerSchema}
+          >
+              {({errors, touched}) => (
+            <Form className="form">
                 <div className="common__info">
                     <h1>Applicant Details</h1>
 
@@ -25,38 +71,55 @@ const OPD = () => {
                             <div className="row">
                                 <div className="col">
                                     <label htmlFor="id">ID</label>
-                                    <input className="form-control" type="text" id="id" name="id"/>
+                                    <Field className="form-control" type="text" id="cus_ref_no" name="cus_ref_no"/>
+                                    {errors.cus_ref_no && touched.cus_ref_no ? (
+                                        <div className="error_message">{errors.cus_ref_no}</div>
+                                    ) : null}
                                 </div>
                                 <div className="col">
                                     <label htmlFor="date">Register Date</label>
-                                    <input className="form-control" type="date" id="date" name="date"/>
+                                    <Field className="form-control" type="date" id="customer_reg_date" name="customer_reg_date"/>
+                                    {errors.customer_reg_date && touched.customer_red_date ? (
+                                        <div className="error_message">{errors.customer_reg_date}</div>
+                                    ) : null}
                                 </div>
                             </div>
 
                             <div className="row">
                                 <div className="col-md-2">
                                     <label htmlFor="name">Title</label>
-                                    <select className="form-select form-select__title">
+                                    <Field as="select" defaultValue={selectedCustomer.customer_salutation}
+                                           name="customer_salutation"
+                                           className="form-select form-select__title">
                                         <option selected></option>
-                                        <option value="1">Mr</option>
-                                        <option value="2">Mrs</option>
-                                        <option value="3">Ms</option>
-                                    </select>
+                                        <option value="Mr">Mr</option>
+                                        <option value="Mrs">Mrs</option>
+                                        <option value="Ms">Ms</option>
+                                    </Field>
+                                    {errors.customer_salutation && touched.customer_salutation ? (
+                                        <div className="error_message">{errors.customer_salutation}</div>
+                                    ) : null}
                                 </div>
                                 <div className="col">
                                     <label htmlFor="name">Full Name</label>
-                                    <input className="form-control" type="text" id="name" name="name"/>
+                                    <Field className="form-control" type="text" id="customer_full_name" name="customer_full_name"/>
+                                    {errors.customer_full_name && touched.customer_full_name ? (
+                                        <div className="error_message">{errors.customer_full_name}</div>
+                                    ) : null}
                                 </div>
                             </div>
 
                             <div className="row">
                                 <div className="col">
                                     <label htmlFor="date">Date of Birth</label>
-                                    <input className="form-control" type="date" id="dob" name="dob"/>
+                                    <Field className="form-control" type="date" id="customer_dob" name="customer_dob"/>
+                                    {errors.customer_dob && touched.customer_dob ? (
+                                        <div className="error_message">{errors.customer_dob}</div>
+                                    ) : null}
                                 </div>
                                 <div className="col">
                                     <label htmlFor="mobile">Mobile No</label>
-                                    <input className="form-control" type="text" id="mobile" name="mobile"/>
+                                    <Field className="form-control" type="text" id="customer_contact_no" name="customer_contact_no"/>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +137,7 @@ const OPD = () => {
                             <div className="row">
                                 <div className="col">
                                     <label htmlFor="address">Address</label>
-                                    <input className="form-control" type="text" id="address" name="address"/>
+                                    <Field className="form-control" type="text" id="customer_address" name="customer_address"/>
                                 </div>
 
                             </div>
@@ -83,26 +146,29 @@ const OPD = () => {
                             <div className="row">
                                 <div className="col">
                                     <label htmlFor="lastmeal">Time of last meal</label>
-                                    <input className="form-control" type="text" id="lastmeal" name="lastmeal"/>
+                                    <Field className="form-control" type="text" id="customer_last_meal_time" name="customer_last_meal_time"/>
                                 </div>
 
                                 <div className="col">
                                     <label htmlFor="country">Referred by</label>
-                                    <select className="form-select">
+                                    <Field as="select" defaultValue={selectedCustomer.customer_last_meal_time_rfrd_by}
+                                           name="customer_last_meal_time_rfrd_by"
+                                           className="form-select">
                                         <option selected></option>
-                                        <option value="1">Mr.Rohan</option>
-                                        <option value="2">Mario</option>
-                                        <option value="3">Nurse Anty</option>
-                                    </select>
+                                        <option value="Mr.Rohan">Mr.Rohan</option>
+                                        <option value="Mr.Mario">Mr.Mario</option>
+                                    </Field>
                                 </div>
                             </div>
 
-                            <NavLink to = "/testDetails" className = "btn btn-primary mb-2" > Save </NavLink>
+                            <button type="submit" className='btn btn-primary mb-2'>Save</button>
+                            {/*<NavLink to = "/testDetails" className = "btn btn-primary mb-2" > Save </NavLink>*/}
 
                         </div>
                     </div>
                 </div>
-            </form>
+            </Form> )}
+          </Formik>
         </div>
         </div>
     )
