@@ -27,7 +27,7 @@ export const agencySlice = createSlice({
             state.selectedAgency = action.payload
         },
         setIsAgencyUpdated: (state, action) => {
-            state.isAgencyUpdatedUpdated = action.payload
+            state.isAgencyUpdated = action.payload
         }
     },
 
@@ -37,7 +37,7 @@ export const agencySlice = createSlice({
         })
         builder.addCase(addAgencyThunk.fulfilled, (state, action) =>{
             if(action.payload.statusCode === "S1000") {
-                NotificationManager.success("Successfully saved customer details")
+                NotificationManager.success("Successfully saved agency details")
                 state.isAgencyUpdated = true
             }
         })

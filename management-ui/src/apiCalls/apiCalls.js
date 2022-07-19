@@ -65,8 +65,31 @@ export const findAgencyByNameThunk = createAsyncThunk('customer/findCustomerByNa
     }).then((res) => res.json()).then((res) => res)
 })
 
+
+
 export const addAgencyThunk = createAsyncThunk('agency/createAgency', async (payload) => {
     return await fetch('http://127.0.0.1:8082/agencies/addAgency', {
+        method: 'POST',
+        headers: new Headers({
+            'Authorization': 'Bearer '+ localStorage.getItem("login_token"),
+            'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify(payload)
+    }).then((res) => res.json()).then((res) => res)
+})
+
+export const findJobByNameThunk = createAsyncThunk('job/findJobByName', async (payload) => {
+    const {jobName} = payload
+    return await fetch(`http://127.0.0.1:8082/jobs/getJobs?jobName=${jobName}`, {
+        method: 'GET',
+        headers: new Headers({
+            'Authorization': 'Bearer '+ localStorage.getItem("login_token"),
+        }),
+    }).then((res) => res.json()).then((res) => res)
+})
+
+export const addJobThunk = createAsyncThunk('job/createJob', async (payload) => {
+    return await fetch('http://127.0.0.1:8082/jobs/addJob', {
         method: 'POST',
         headers: new Headers({
             'Authorization': 'Bearer '+ localStorage.getItem("login_token"),

@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import {Formik, Form, Field} from "formik";
 import {addAgencyThunk, findAgencyByNameThunk} from "../../apiCalls/apiCalls";
 import {agencySelector, setSelectedAgency} from "./index";
-import {useHistory} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 
 
 const AddAgency = () => {
@@ -32,8 +32,12 @@ const AddAgency = () => {
         <div>
             <nav aria-label="breadcrumb" className="navbar">
                 <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="receptionHome">Home</a></li>
-                    <li className="breadcrumb-item"><a href="GCC">GCC</a></li>
+                    <li className="breadcrumb-item">
+                        <NavLink to="/receptionHome"> Home </NavLink>
+                    </li>
+                    <li className="breadcrumb-item">
+                        <NavLink to="/GCC"> GCC </NavLink>
+                    </li>
                     <li className="breadcrumb-item active" aria-current="page">Add Agency</li>
                 </ol>
             </nav>

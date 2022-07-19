@@ -6,6 +6,7 @@ const initialState = {
     isCustomerUpdated: false,
     customersByNameList: [],
     isCustomerFindByNameLoading: false,
+    selectedRadioButton:"GCC",
     selectedCustomer: {
         cus_ref_no: "",
         customer_salutation: "",
@@ -36,6 +37,9 @@ export const customerSlice = createSlice({
         },
         setIsCustomerUpdated: (state, action) => {
             state.isCustomerUpdated = action.payload
+        },
+        setSelectedRadioButton: (state,action) => {
+            state.selectedRadioButton = action.payload
         }
     },
     extraReducers(builder) {
@@ -69,5 +73,5 @@ export const customerSlice = createSlice({
 })
 
 export default customerSlice.reducer
-export const { setSelectedCustomer, setIsCustomerUpdated} = customerSlice.actions
+export const { setSelectedCustomer, setIsCustomerUpdated, setSelectedRadioButton} = customerSlice.actions
 export const customerSelector = state => state.customer

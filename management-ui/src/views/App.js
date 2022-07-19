@@ -8,6 +8,7 @@ import {history} from "../router/router";
 import OPD from "./OPD/OPD";
 import TestDetails from "./TestDetails/TestDetails";
 import AddAgency from "./AddAgency/AddAgency";
+import AddJob from "./AddJob/AddJob"
 import CustomerDetails from "./CustomerDetails/CustomerDetails";
 import CashierList from "./CashierList/CashierList";
 import Cashier from "./Cashier/Cashier";
@@ -18,6 +19,7 @@ import Lab from "./Lab/Lab";
 import LabValues from "./LabValues/LabValues";
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer} from "react-notifications";
+
 
 function App() {
 
@@ -32,6 +34,7 @@ function App() {
                     <Route exact path="/opd" component={OPD}></Route>
                     <Route exact path="/testDetails" component={TestDetails}></Route>
                     <Route exact path="/addAgency" component={AddAgency}></Route>
+                    <Route exact path="/addJob" component={AddJob}></Route>
                     <Route exact path="/customerDetails" component={CustomerDetails}></Route>
                     <Route exact path="/cashierList" component={CashierList}></Route>
                     <Route exact path="/cashier" component={Cashier}></Route>

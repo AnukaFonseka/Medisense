@@ -7,7 +7,9 @@ import {Formik, Form, Field} from "formik";
 import * as Yup from 'yup';
 import {customerSelector, setSelectedCustomer} from "../CustomerDetails";
 import AsyncAgencySelect from "./AsyncAgencySelect";
+import AsyncJobSelect from "./AsyncJobSelect";
 import { setIsAgencyUpdated} from "../AddAgency";
+import {setIsJobUpdated} from "../AddJob";
 
 const GCC = () => {
     const dispatch = useDispatch()
@@ -16,15 +18,21 @@ const GCC = () => {
     const [updatedCustomerValues, setUpdatedCustomerValues] = useState({});
 
     useEffect(() => {
+        dispatch(setIsAgencyUpdated(false))
+    },[])
+
+    useEffect(()=>{
+        dispatch(setIsJobUpdated(false))
+    })
+
+    useEffect(() => {
         if(isCustomerUpdated) {
             dispatch(setSelectedCustomer(updatedCustomerValues))
             history.push('/testDetails')
         }
     },[selectedCustomer, isCustomerUpdated])
 
-    useEffect(() => {
-        dispatch(setIsAgencyUpdated(false))
-    },[])
+
 
     const CustomerSchema = Yup.object().shape({
         cus_ref_no: Yup.number()
@@ -206,15 +214,9 @@ const GCC = () => {
                                             <div className="col">
                                                 <label htmlFor="job">Job Title</label>
                                                 <div className="agencyDiv">
-                                                <Field as="select" defaultValue={selectedCustomer.customer_job_title}
-                                                       name="customer_job_title"
-                                                       className="form-select">
-                                                    <option selected></option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                </Field>
-                                                <NavLink to="/addAgency"
+                                                    <Field as={AsyncJobSelect}
+                                                           name="customer_job_title" />
+                                                <NavLink to="/addJob"
                                                          className="btn__agency btn btn-secondary ">Add</NavLink>
                                                 </div>
                                             </div>
