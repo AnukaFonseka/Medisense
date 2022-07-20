@@ -4,7 +4,7 @@ import {NavLink, useHistory} from "react-router-dom";
 import * as Yup from 'yup';
 import {Field, Form, Formik} from "formik";
 import {useDispatch, useSelector} from "react-redux";
-import {customerSelector} from "../CustomerDetails";
+import {customerSelector, setSelectedCustomer} from "../CustomerDetails";
 import {addCustomerThunk, updateCustomerThunk} from "../../apiCalls/apiCalls";
 
 const OPD = () => {
@@ -13,9 +13,9 @@ const OPD = () => {
     const history = useHistory();
     const [updatedCustomerValues, setUpdatedCustomerValues] = useState({});
 
-    useEffect(()=>{
+    useEffect(() => {
         if(isCustomerUpdated) {
-            dispatch(selectedCustomer(updatedCustomerValues))
+            dispatch(setSelectedCustomer(updatedCustomerValues))
             history.push('./testDetails')
         }
     },[selectedCustomer, isCustomerUpdated])
@@ -146,7 +146,7 @@ const OPD = () => {
                             <div className="row">
                                 <div className="col">
                                     <label htmlFor="lastmeal">Time of last meal</label>
-                                    <Field className="form-control" type="text" id="customer_last_meal_time" name="customer_last_meal_time"/>
+                                    <Field className="form-control" type="time" id="customer_last_meal_time" name="customer_last_meal_time"/>
                                 </div>
 
                                 <div className="col">

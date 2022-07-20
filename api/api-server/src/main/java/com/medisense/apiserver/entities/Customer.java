@@ -47,7 +47,7 @@ public class Customer {
 
     private String customer_country;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "HH:mm")
     private Date customer_last_meal_time;
 
     private String customer_last_meal_time_rfrd_by;

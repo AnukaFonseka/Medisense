@@ -54,7 +54,7 @@ CREATE TABLE `customer`
     `customer_agency` VARCHAR(100),
     `customer_job_title` VARCHAR(150),
     `customer_country` VARCHAR(150),
-    `customer_last_meal_time` DATETIME,
+    `customer_last_meal_time` TIME,
     `customer_last_meal_time_rfrd_by` VARCHAR(150),
     PRIMARY KEY (`id`),
     UNIQUE KEY `uk_customer_ref_no` (`cus_ref_no`)
