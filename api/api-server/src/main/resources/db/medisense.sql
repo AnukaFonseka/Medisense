@@ -84,4 +84,14 @@ CREATE TABLE `job_details`
     UNIQUE KEY `uk_job_details_job_name` (`job_name`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `country_details`
+(
+    `id` bigint(20) NOT NULL AUTO_INCREMENT,
+    `country_name` VARCHAR(250) NOT NULL ,
+    `country_code` VARCHAR(50) ,
+    `country_gcc` VARCHAR(20),
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `uk_country_details_country_name` (`country_name`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 INSERT INTO `user_roles` (`user_id`, `role_id`) values (1, 4);

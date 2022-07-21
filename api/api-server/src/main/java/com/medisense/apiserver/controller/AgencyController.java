@@ -1,6 +1,4 @@
 package com.medisense.apiserver.controller;
-
-
 import com.medisense.apiserver.entities.Agency;
 import com.medisense.apiserver.entities.HttpResult;
 import com.medisense.apiserver.service.AgencyService;
@@ -9,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController

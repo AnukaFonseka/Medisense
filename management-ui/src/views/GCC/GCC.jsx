@@ -222,14 +222,12 @@ const GCC = () => {
                                             </div>
                                             <div className="col">
                                                 <label htmlFor="country">Country</label>
-                                                <Field as="select" defaultValue={selectedCustomer.customer_country}
-                                                       name="customer_country"
-                                                       className="form-select">
-                                                    <option selected></option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                </Field>
+                                                <div className="agencyDiv">
+                                                    <Field as={AsyncJobSelect}
+                                                           name="country_name" />
+                                                    <NavLink to="/addCountry"
+                                                             className="btn__agency btn btn-secondary ">Add</NavLink>
+                                                </div>
                                             </div>
                                         </div>
                                         <br/>
