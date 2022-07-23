@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "./opd.css"
-import {NavLink, useHistory} from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import * as Yup from 'yup';
 import {Field, Form, Formik} from "formik";
 import {useDispatch, useSelector} from "react-redux";
@@ -18,7 +18,7 @@ const OPD = () => {
             dispatch(setSelectedCustomer(updatedCustomerValues))
             history.push('./testDetails')
         }
-    },[selectedCustomer, isCustomerUpdated])
+    },[selectedCustomer, isCustomerUpdated, dispatch, history, updatedCustomerValues])
 
     const CustomerSchema = Yup.object().shape({
        cus_ref_no: Yup.number()

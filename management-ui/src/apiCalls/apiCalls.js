@@ -98,3 +98,24 @@ export const addJobThunk = createAsyncThunk('job/createJob', async (payload) => 
         body: JSON.stringify(payload)
     }).then((res) => res.json()).then((res) => res)
 })
+
+export const addTestThunk = createAsyncThunk('test/createTest', async (payload) => {
+    return await fetch('http://127.0.0.1:8082/tests/addTest', {
+        method: 'POST',
+        headers: new Headers({
+            'Authorization': 'Bearer '+ localStorage.getItem("login_token"),
+            'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify(payload)
+    }).then((res) => res.json()).then((res) => res)
+})
+
+export const findTestByNameThunk = createAsyncThunk('test/findTestByName', async (payload) => {
+    const {testName} = payload
+    return await fetch(`http://127.0.0.1:8082/tests/getTests?testName=${testName}`, {
+        method: 'GET',
+        headers: new Headers({
+            'Authorization': 'Bearer '+ localStorage.getItem("login_token"),
+        }),
+    }).then((res) => res.json()).then((res) => res)
+})

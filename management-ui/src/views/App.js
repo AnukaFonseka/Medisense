@@ -19,6 +19,7 @@ import Lab from "./Lab/Lab";
 import LabValues from "./LabValues/LabValues";
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer} from "react-notifications";
+import AddTest from "./AddTest/AddTest"
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
                     <Route exact path="/miniLab" component={MiniLab}></Route>
                     <Route exact path="/lab" component={Lab}></Route>
                     <Route exact path="/labValues" component={LabValues}></Route>
+                    <Route exact path="/addTest" component={AddTest}></Route>
                     <Redirect exact to="/login" from="/"/>
                 </Switch>
             </ConnectedRouter>

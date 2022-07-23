@@ -4,8 +4,8 @@ table {
 .search__wrapper {
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /*justify-content: center;*/
+    /*align-items: center;*/
 }
 .searchbar {
     height: 2rem;
@@ -17,4 +17,8 @@ table {
 
 .btn {
     margin-top: 0 !important;
+}
+
+.css-b62m3t-container {
+    width: 100%;
 }

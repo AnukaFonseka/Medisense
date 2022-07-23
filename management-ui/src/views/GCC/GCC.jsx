@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import "./gcc.css"
-import {NavLink, useHistory, useLocation} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {addCustomerThunk, findAgencyByNameThunk, updateCustomerThunk} from "../../apiCalls/apiCalls";
+import {addCustomerThunk, updateCustomerThunk} from "../../apiCalls/apiCalls";
 import {Formik, Form, Field} from "formik";
 import * as Yup from 'yup';
 import {customerSelector, setSelectedCustomer} from "../CustomerDetails";
@@ -19,11 +19,9 @@ const GCC = () => {
 
     useEffect(() => {
         dispatch(setIsAgencyUpdated(false))
-    },[])
-
-    useEffect(()=>{
         dispatch(setIsJobUpdated(false))
-    })
+    },[dispatch])
+
 
     useEffect(() => {
         if(isCustomerUpdated) {

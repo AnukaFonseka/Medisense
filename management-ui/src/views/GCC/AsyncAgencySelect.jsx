@@ -1,5 +1,5 @@
 import React from "react";
-import {useField, FieldProps} from "formik";
+import {useField} from "formik";
 import AsyncSelect from "react-select/async"
 import {findAgencyByNameThunk} from "../../apiCalls/apiCalls";
 import {useDispatch, useSelector} from "react-redux";
@@ -8,8 +8,8 @@ import {customerSelector} from "../CustomerDetails";
 
 const AsyncAgencySelect = ({ ...props}) => {
     const dispatch = useDispatch()
-    const [field, meta, helpers] = useField(props);
-    const {AgenciesByNameList, isAgencyFindByNameLoading, isAgencyUpdated} = useSelector(agencySelector)
+    const [field, helpers] = useField(props);
+    const {AgenciesByNameList, isAgencyFindByNameLoading} = useSelector(agencySelector)
     const {selectedCustomer} =  useSelector(customerSelector)
     const {setValue} = helpers;
 

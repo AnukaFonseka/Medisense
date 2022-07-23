@@ -1,15 +1,38 @@
 import React, {useEffect} from "react";
 import "./TestDetails.css"
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {customerSelector, setIsCustomerUpdated} from "../CustomerDetails";
+import {setIsCustomerUpdated, setSelectedCustomer} from "../CustomerDetails";
+import {setIsTestUpdated, setSelectedTest, testSelector} from "../AddTest";
+import { findTestByNameThunk} from "../../apiCalls/apiCalls";
+import {Async} from "react-select-virtualized";
 
 const TestDetails = () => {
     const dispatch = useDispatch()
-    const {selectedCustomer, isCustomerUpdated} =  useSelector(customerSelector)
+    const {selectedTest, isTestUpdated, isTestFindByNameLoading, TestsByNameList} =  useSelector(testSelector)
+    const history = useHistory();
+
     useEffect(() => {
         dispatch(setIsCustomerUpdated(false))
+        dispatch(setIsTestUpdated(false))
     },[])
+
+    const handleSelected = (val) => {
+        let test = TestsByNameList.filter((test) => {return test.test_name === val.value})[0]
+        dispatch(setSelectedTest(test))
+    }
+
+    const loadOptions = (input, callback) => {
+        let payLoad = {testName: input}
+        dispatch(findTestByNameThunk(payLoad))
+
+        if(!isTestFindByNameLoading) {
+            let newTests = TestsByNameList.map((test) => {
+                return {label: test.test_name, value: test.test_name}
+            })
+            callback(newTests)
+        }
+    };
 
     return(
 
@@ -46,8 +69,17 @@ const TestDetails = () => {
 
                     <div className="common__info">
                         <div className="search__wrapper">
-                            <input className="searchbar" type="search" placeholder="Search..."/>
-                            <button className="btn btn-success">Add</button>
+                            {/*<input className="searchbar" type="search" placeholder="Search..."/>*/}
+                            <Async
+                                placeholder="Search customer..."
+                                isLoading={isTestFindByNameLoading}
+                                options={TestsByNameList}
+                                onChange={(e) => handleSelected(e)}
+                                loadOptions={loadOptions}
+                            />
+                            {/*<button className="btn btn-success">Add</button>*/}
+                            <NavLink to="/addTest" className="btn btn-success">Add Test</NavLink>
+
                         </div>
 
                     </div>

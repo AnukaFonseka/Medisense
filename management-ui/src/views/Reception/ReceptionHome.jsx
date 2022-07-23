@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import './receptionHome.css'
-import {Link, NavLink, useHistory} from "react-router-dom";
+import { NavLink, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {findCustomerByNameThunk} from "../../apiCalls/apiCalls";
 import {customerSelector} from "../CustomerDetails";
