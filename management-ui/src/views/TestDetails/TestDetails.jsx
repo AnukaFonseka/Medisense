@@ -3,13 +3,13 @@ import "./TestDetails.css"
 import {NavLink, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {setIsCustomerUpdated, setSelectedCustomer} from "../CustomerDetails";
-import {setIsTestUpdated, setSelectedTest, testSelector} from "../AddTest";
+import {setIsTestUpdated, setSelectedTest, testSelector, updateSelectedTestList} from "../AddTest";
 import { findTestByNameThunk} from "../../apiCalls/apiCalls";
 import {Async} from "react-select-virtualized";
 
 const TestDetails = () => {
     const dispatch = useDispatch()
-    const {selectedTest, isTestUpdated, isTestFindByNameLoading, TestsByNameList} =  useSelector(testSelector)
+    const {selectedTest, isTestUpdated, isTestFindByNameLoading, TestsByNameList, selectedTestList} =  useSelector(testSelector)
     const history = useHistory();
 
     useEffect(() => {
@@ -20,6 +20,7 @@ const TestDetails = () => {
     const handleSelected = (val) => {
         let test = TestsByNameList.filter((test) => {return test.test_name === val.value})[0]
         dispatch(setSelectedTest(test))
+        dispatch(updateSelectedTestList(test))
     }
 
     const loadOptions = (input, callback) => {
@@ -95,25 +96,18 @@ const TestDetails = () => {
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>
-                                    asasa
-                                </td>
-                                <td>Otto</td>
-
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            {!isTestFindByNameLoading && selectedTestList.size !== 0 ?
+                                selectedTestList.map((test) => {
+                                    return <tr>
+                                        <td scope="row">{test.test_code}</td>
+                                        <td>{test.test_name}</td>
+                                        <td>{test.test_amount}</td>
+                                    </tr>
+                                }) :
+                                <tr>
+                                    <th scope="row"> No tests selected </th>
+                                </tr>
+                            }
                             </tbody>
                         </table>
 

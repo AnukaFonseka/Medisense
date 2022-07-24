@@ -10,7 +10,8 @@ const initialState = {
         test_name: "",
         test_code: "",
         test_amount:"",
-    }
+    },
+    selectedTestList: []
 }
 
 export const testSlice = createSlice({
@@ -22,6 +23,9 @@ export const testSlice = createSlice({
         },
         setIsTestUpdated: (state, action) => {
             state.isTestUpdated = action.payload
+        },
+        updateSelectedTestList: (state, action) => {
+            state.selectedTestList.push(action.payload)
         }
     },
 
@@ -48,5 +52,5 @@ export const testSlice = createSlice({
 })
 
 export default testSlice.reducer
-export const {setSelectedTest, setIsTestUpdated} = testSlice.actions
+export const {setSelectedTest, setIsTestUpdated, updateSelectedTestList} = testSlice.actions
 export const testSelector = state => state.test
