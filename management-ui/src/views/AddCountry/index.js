@@ -9,6 +9,7 @@ const initialState = {
     selectedCountry: {
         country_name: "",
         country_code: "",
+        country_gcc:""
     }
 }
 

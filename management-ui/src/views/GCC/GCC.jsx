@@ -111,7 +111,7 @@ const GCC = () => {
                                                 <Field as="select" defaultValue={selectedCustomer.customer_salutation}
                                                        name="customer_salutation"
                                                        className="form-select form-select__title">
-                                                    <option selected></option>
+                                                    <option defaultValue></option>
                                                     <option value="Mr">Mr</option>
                                                     <option value="Mrs">Mrs</option>
                                                     <option value="Ms">Ms</option>
@@ -169,7 +169,7 @@ const GCC = () => {
                                                 <Field as="select" defaultValue={selectedCustomer.customer_civil_status}
                                                        name="customer_civil_status"
                                                        className="form-select">
-                                                    <option selected></option>
+                                                    <option defaultValue></option>
                                                     <option value="Married">Married</option>
                                                     <option value="Single">Single</option>
                                                     <option value="Widowed">Widowed</option>

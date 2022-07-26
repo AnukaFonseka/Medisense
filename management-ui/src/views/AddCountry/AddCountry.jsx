@@ -77,10 +77,10 @@ const AddCountry = () => {
 
                                         <div className="col-md-2">
                                             <label htmlFor="name">Type</label>
-                                            <Field as="select" defaultValue={}
-                                                   name="country_type"
+                                            <Field as="select"
+                                                   name="country_gcc"
                                                    className="form-select form-select__title">
-                                                <option selected></option>
+                                                <option defaultValue></option>
                                                 <option value="GCC">GCC</option>
                                                 <option value="NonGCC">Non GCC</option>
                                             </Field>
