@@ -20,6 +20,7 @@ import LabValues from "./LabValues/LabValues";
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer} from "react-notifications";
 import AddTest from "./AddTest/AddTest"
+import AddCountry from "./AddCountry";
 
 
 function App() {

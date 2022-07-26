@@ -119,3 +119,24 @@ export const findTestByNameThunk = createAsyncThunk('test/findTestByName', async
         }),
     }).then((res) => res.json()).then((res) => res)
 })
+
+export const addCountryThunk = createAsyncThunk('country/createCountry', async (payload) => {
+    return await fetch('http://127.0.0.1:8082/countries/addCountry', {
+        method: 'POST',
+        headers: new Headers({
+            'Authorization': 'Bearer '+ localStorage.getItem("login_token"),
+            'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify(payload)
+    }).then((res) => res.json()).then((res) => res)
+})
+
+export const findCountryByNameThunk = createAsyncThunk('country/findCountryByName', async (payload) => {
+    const {countryName} = payload
+    return await fetch(`http://127.0.0.1:8082/countries/getCountries?countryName=${countryName}`, {
+        method: 'GET',
+        headers: new Headers({
+            'Authorization': 'Bearer '+ localStorage.getItem("login_token"),
+        }),
+    }).then((res) => res.json()).then((res) => res)
+})
