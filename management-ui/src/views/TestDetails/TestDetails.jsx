@@ -89,8 +89,8 @@ const TestDetails = () => {
                         <table className="table table-hover">
                             <thead>
                             <tr className="table-success">
-                                <th scope="col">No</th>
-                                <th scope="col">Description</th>
+                                <th scope="col">Package</th>
+                                <th scope="col">Test</th>
                                 <th scope="col">Amount</th>
                                 <th scope="col">Action</th>
 

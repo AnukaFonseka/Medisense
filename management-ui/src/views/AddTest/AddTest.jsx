@@ -22,7 +22,7 @@ const AddTest = () => {
         test_name: Yup.string()
             .required('Test Name is Required'),
         test_code: Yup.string()
-            .required('test code is Required'),
+            .required('test package is Required'),
         test_amount: Yup.string()
             .required('Test amount is Required'),
     });
@@ -78,7 +78,7 @@ const AddTest = () => {
 
                                         <div className="row">
                                             <div className="col">
-                                                <label htmlFor="test_code">Test Code</label>
+                                                <label htmlFor="test_code">Test Package</label>
                                                 <Field className="form-control" type="text" id="test_code"
                                                        name="test_code"/>
                                                 {errors.test_code && touched.test_code ? (
