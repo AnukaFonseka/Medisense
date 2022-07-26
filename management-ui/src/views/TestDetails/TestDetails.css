@@ -22,3 +22,8 @@ table {
 .css-b62m3t-container {
     width: 100%;
 }
+
+.btn_test {
+    float: none!important;
+    width: 75px !important;
+}

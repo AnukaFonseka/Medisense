@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import "./TestDetails.css"
 import {NavLink, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {setIsCustomerUpdated, setSelectedCustomer} from "../CustomerDetails";
+import {setIsCustomerUpdated} from "../CustomerDetails";
 import {setIsTestUpdated, setSelectedTest, testSelector, updateSelectedTestList} from "../AddTest";
 import { findTestByNameThunk} from "../../apiCalls/apiCalls";
 import {Async} from "react-select-virtualized";
@@ -92,6 +92,7 @@ const TestDetails = () => {
                                 <th scope="col">No</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Amount</th>
+                                <th scope="col">Action</th>
 
                             </tr>
                             </thead>
@@ -102,6 +103,7 @@ const TestDetails = () => {
                                         <td scope="row">{test.test_code}</td>
                                         <td>{test.test_name}</td>
                                         <td>{test.test_amount}</td>
+                                        <td><button className="btn_test btn btn-danger">Delete</button></td>
                                     </tr>
                                 }) :
                                 <tr>
