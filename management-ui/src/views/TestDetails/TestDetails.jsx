@@ -3,10 +3,15 @@ import "./TestDetails.css"
 import {NavLink, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {setIsCustomerUpdated} from "../CustomerDetails";
-import {setIsTestUpdated, setSelectedTest, testSelector, updateSelectedTestList} from "../AddTest";
+import {
+    removeTestFromSelectedTestList,
+    setIsTestUpdated,
+    setSelectedTest,
+    testSelector,
+    updateSelectedTestList
+} from "../AddTest";
 import { findTestByNameThunk} from "../../apiCalls/apiCalls";
 import {Async} from "react-select-virtualized";
-import ReactDeleteRow from 'react-delete-row';
 
 const TestDetails = () => {
     const dispatch = useDispatch()
@@ -19,7 +24,7 @@ const TestDetails = () => {
     },[])
 
     const handleSelected = (val) => {
-        let test = TestsByNameList.filter((test) => {return test.test_name === val.value})[0]
+        let test = TestsByNameList.filter((test) => {return test.test_code === val.value})[0]
         dispatch(setSelectedTest(test))
         dispatch(updateSelectedTestList(test))
         console.log(TestsByNameList)
@@ -31,7 +36,7 @@ const TestDetails = () => {
 
         if(!isTestFindByNameLoading) {
             let newTests = TestsByNameList.map((test) => {
-                return {label: test.test_name, value: test.test_name}
+                return {label: test.test_code, value: test.test_code}
             })
             callback(newTests)
         }
@@ -102,16 +107,16 @@ const TestDetails = () => {
                             {!isTestFindByNameLoading && selectedTestList.size !== 0 ?
                                 selectedTestList.map((test,i) => {
                                     return (
-                                        // <tr>
-                                        <ReactDeleteRow
-                                            deleteElement={ <button className="btn_test btn btn-danger">Delete</button> }
-                                            key={i} data={test} onDelete={ test => { return window.confirm(`Are you sure?`) }}>
-                                        <td scope="row">{test.test_code}</td>
-                                        <td>{test.test_name}</td>
-                                        <td>{test.test_amount}</td>
-                                        {/*<td><button className="btn_test btn btn-danger">Delete</button></td>*/}
-                                        </ReactDeleteRow>)
-                                    // </tr>
+                                        <tr key={i}>
+                                            <td scope="row">{test.test_code}</td>
+                                            <td>{test.test_name}</td>
+                                            <td>{test.test_amount}</td>
+                                            <td><button className="btn_test btn-danger" onClick={(e) => {
+                                                e.preventDefault()
+                                                dispatch(removeTestFromSelectedTestList(i))
+                                            }}>Delete</button></td>
+                                        </tr>
+                                    )
                                 }) :
                                 <tr>
                                     <th scope="row"> No tests selected </th>

@@ -26,7 +26,10 @@ export const testSlice = createSlice({
         },
         updateSelectedTestList: (state, action) => {
             state.selectedTestList.push(action.payload)
-        }
+        },
+        removeTestFromSelectedTestList: (state, action) => {
+            state.selectedTestList.splice(action.payload, 1)
+        },
     },
 
     extraReducers(builder) {
@@ -52,5 +55,5 @@ export const testSlice = createSlice({
 })
 
 export default testSlice.reducer
-export const {setSelectedTest, setIsTestUpdated, updateSelectedTestList} = testSlice.actions
+export const {setSelectedTest, setIsTestUpdated, updateSelectedTestList, removeTestFromSelectedTestList} = testSlice.actions
 export const testSelector = state => state.test
