@@ -18,10 +18,6 @@ const TestDetails = () => {
         dispatch(setIsTestUpdated(false))
     },[])
 
-    const handleButton = () => {
-        console.log("hello")
-    }
-
     const handleSelected = (val) => {
         let test = TestsByNameList.filter((test) => {return test.test_name === val.value})[0]
         dispatch(setSelectedTest(test))
@@ -108,7 +104,7 @@ const TestDetails = () => {
                                     return (
                                         // <tr>
                                         <ReactDeleteRow
-                                            deleteElement={ <button className="btn_test btn btn-danger" onClick={handleButton()}>Delete</button> }
+                                            deleteElement={ <button className="btn_test btn btn-danger">Delete</button> }
                                             key={i} data={test} onDelete={ test => { return window.confirm(`Are you sure?`) }}>
                                         <td scope="row">{test.test_code}</td>
                                         <td>{test.test_name}</td>
