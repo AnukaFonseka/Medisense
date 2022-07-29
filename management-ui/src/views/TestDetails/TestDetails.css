@@ -17,6 +17,7 @@ table {
 
 .btn {
     margin-top: 0 !important;
+    float: unset!important;
 }
 
 .css-b62m3t-container {
@@ -24,6 +25,6 @@ table {
 }
 
 .btn_test {
-    float: none!important;
+    float: unset!important;
     width: 75px !important;
 }

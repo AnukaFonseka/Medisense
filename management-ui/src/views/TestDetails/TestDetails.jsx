@@ -6,6 +6,7 @@ import {setIsCustomerUpdated} from "../CustomerDetails";
 import {setIsTestUpdated, setSelectedTest, testSelector, updateSelectedTestList} from "../AddTest";
 import { findTestByNameThunk} from "../../apiCalls/apiCalls";
 import {Async} from "react-select-virtualized";
+import ReactDeleteRow from 'react-delete-row';
 
 const TestDetails = () => {
     const dispatch = useDispatch()
@@ -17,10 +18,15 @@ const TestDetails = () => {
         dispatch(setIsTestUpdated(false))
     },[])
 
+    const handleButton = () => {
+        console.log("hello")
+    }
+
     const handleSelected = (val) => {
         let test = TestsByNameList.filter((test) => {return test.test_name === val.value})[0]
         dispatch(setSelectedTest(test))
         dispatch(updateSelectedTestList(test))
+        console.log(TestsByNameList)
     }
 
     const loadOptions = (input, callback) => {
@@ -98,13 +104,18 @@ const TestDetails = () => {
                             </thead>
                             <tbody>
                             {!isTestFindByNameLoading && selectedTestList.size !== 0 ?
-                                selectedTestList.map((test) => {
-                                    return <tr>
+                                selectedTestList.map((test,i) => {
+                                    return (
+                                        // <tr>
+                                        <ReactDeleteRow
+                                            deleteElement={ <button className="btn_test btn btn-danger" onClick={handleButton()}>Delete</button> }
+                                            key={i} data={test} onDelete={ test => { return window.confirm(`Are you sure?`) }}>
                                         <td scope="row">{test.test_code}</td>
                                         <td>{test.test_name}</td>
                                         <td>{test.test_amount}</td>
-                                        <td><button className="btn_test btn btn-danger">Delete</button></td>
-                                    </tr>
+                                        {/*<td><button className="btn_test btn btn-danger">Delete</button></td>*/}
+                                        </ReactDeleteRow>)
+                                    // </tr>
                                 }) :
                                 <tr>
                                     <th scope="row"> No tests selected </th>
