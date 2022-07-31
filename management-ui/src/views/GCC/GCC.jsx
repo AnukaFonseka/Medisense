@@ -10,6 +10,7 @@ import AsyncAgencySelect from "./AsyncAgencySelect";
 import AsyncJobSelect from "./AsyncJobSelect";
 import { setIsAgencyUpdated} from "../AddAgency";
 import {setIsJobUpdated} from "../AddJob";
+import AsyncCountrySelect from "./AsyncCountrySelect";
 
 const GCC = () => {
     const dispatch = useDispatch()
@@ -221,7 +222,7 @@ const GCC = () => {
                                             <div className="col">
                                                 <label htmlFor="country">Country</label>
                                                 <div className="agencyDiv">
-                                                    <Field as={AsyncJobSelect}
+                                                    <Field as={AsyncCountrySelect}
                                                            name="country_name" />
                                                     <NavLink to="/addCountry"
                                                              className="btn__agency btn btn-secondary ">Add</NavLink>
