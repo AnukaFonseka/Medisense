@@ -32,7 +32,7 @@ const AsyncCountrySelect = ({ ...props}) => {
     return(
         <AsyncSelect
             className="select__country"
-            defaultValue={{label : selectedCustomer.country_name, value: selectedCustomer.country_name}}
+            defaultValue={{label : selectedCustomer.customer_country, value: selectedCustomer.customer_country}}
             loadOptions={loadOptions}
             name={field.name}
             onChange={onChange}

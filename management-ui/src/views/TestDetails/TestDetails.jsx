@@ -25,9 +25,9 @@ const TestDetails = () => {
 
     const handleSelected = (val) => {
         let test = TestsByNameList.filter((test) => {return test.test_code === val.value})[0]
-        dispatch(setSelectedTest(test))
+        // dispatch(setSelectedTest(test))
         dispatch(updateSelectedTestList(test))
-        console.log(TestsByNameList)
+        console.log(selectedTestList)
     }
 
     const loadOptions = (input, callback) => {
@@ -66,26 +66,14 @@ const TestDetails = () => {
                     <br/>
 
                     <div className="common__info">
-                        <div className="form-floating">
-                            <textarea className="form-control" placeholder="Leave a comment here"
-                                      id="floatingTextarea"></textarea>
-                            <label htmlFor="floatingTextarea">Remarks</label>
-                        </div>
-
-                    </div>
-                    <br/>
-
-                    <div className="common__info">
                         <div className="search__wrapper">
-                            {/*<input className="searchbar" type="search" placeholder="Search..."/>*/}
                             <Async
-                                placeholder="Search customer..."
+                                placeholder="Search test package..."
                                 isLoading={isTestFindByNameLoading}
                                 options={TestsByNameList}
                                 onChange={(e) => handleSelected(e)}
                                 loadOptions={loadOptions}
                             />
-                            {/*<button className="btn btn-success">Add</button>*/}
                             <NavLink to="/addTest" className="btn btn-success">Add Test</NavLink>
 
                         </div>
@@ -111,7 +99,7 @@ const TestDetails = () => {
                                             <td scope="row">{test.test_code}</td>
                                             <td>{test.test_name}</td>
                                             <td>{test.test_amount}</td>
-                                            <td><button className="btn_test btn-danger" onClick={(e) => {
+                                            <td><button className="btn_test btn btn-danger" onClick={(e) => {
                                                 e.preventDefault()
                                                 dispatch(removeTestFromSelectedTestList(i))
                                             }}>Delete</button></td>
@@ -132,30 +120,25 @@ const TestDetails = () => {
                         <table className="table table-hover">
                             <thead>
                             <tr className="table-info">
-                                <th scope="col">No</th>
-                                <th scope="col">Master Code</th>
-                                <th scope="col">Description</th>
+                                <th scope="col">Package</th>
+                                <th scope="col">Test</th>
 
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            {!isTestFindByNameLoading && selectedTestList.size !== 0 ?
+                                selectedTestList.map((test,i) => {
+                                    return (
+                                        <tr key={i}>
+                                            <td scope="row">{test.test_code}</td>
+                                            <td>{test.test_name}</td>
+                                        </tr>
+                                    )
+                                }) :
+                                <tr>
+                                    <th scope="row"> No tests selected </th>
+                                </tr>
+                            }
                             </tbody>
                         </table>
 

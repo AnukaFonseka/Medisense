@@ -223,7 +223,7 @@ const GCC = () => {
                                                 <label htmlFor="country">Country</label>
                                                 <div className="agencyDiv">
                                                     <Field as={AsyncCountrySelect}
-                                                           name="country_name" />
+                                                           name="customer_country" />
                                                     <NavLink to="/addCountry"
                                                              className="btn__agency btn btn-secondary ">Add</NavLink>
                                                 </div>
@@ -232,8 +232,6 @@ const GCC = () => {
                                         <br/>
 
                                         <button type="submit" className="btn btn-primary mb-2"> Save</button>
-                                        {/*<NavLink to="/testDetails" className="btn btn-primary mb-2"> Save </NavLink>*/}
-
                                     </div>
                                 </div>
                             </div>
