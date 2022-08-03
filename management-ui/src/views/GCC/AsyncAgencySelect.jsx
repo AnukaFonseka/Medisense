@@ -8,7 +8,7 @@ import {customerSelector} from "../CustomerDetails";
 
 const AsyncAgencySelect = ({ ...props}) => {
     const dispatch = useDispatch()
-    const [field, helpers] = useField(props);
+    const [field, meta, helpers] = useField(props);
     const {AgenciesByNameList, isAgencyFindByNameLoading} = useSelector(agencySelector)
     const {selectedCustomer} =  useSelector(customerSelector)
     const {setValue} = helpers;
