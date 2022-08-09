@@ -1,6 +1,7 @@
 package com.medisense.apiserver.controller;
 import com.medisense.apiserver.entities.HttpResult;
-import com.medisense.apiserver.entities.Tests;
+import com.medisense.apiserver.entities.TestDetails;
+import com.medisense.apiserver.entities.TestPackage;
 import com.medisense.apiserver.service.TestsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,14 +23,14 @@ public class TestsController {
 
     @PostMapping(path = "addTest", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public HttpResult saveAgencyToDb(@RequestBody Tests test) {
+    public HttpResult saveAgencyToDb(@RequestBody TestDetails test) {
         logger.info("Create Test request recieved [{}]", test);
         return testsService.saveTestToDb(test);
     }
 
     @GetMapping(path = "getTests")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public List<Tests> getAgenciesByName(@RequestParam String testName) {
+    public List<TestDetails> getAgenciesByName(@RequestParam String testName) {
         logger.info("Find Tests by name request recieved [{}]", testName);
         return testsService.getTestByTestName(testName);
     }

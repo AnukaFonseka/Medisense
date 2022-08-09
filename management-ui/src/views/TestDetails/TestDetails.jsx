@@ -27,7 +27,7 @@ const TestDetails = () => {
         let test = TestsByNameList.filter((test) => {return test.test_code === val.value})[0]
         // dispatch(setSelectedTest(test))
         dispatch(updateSelectedTestList(test))
-        console.log(selectedTestList)
+        console.log(test)
     }
 
     const loadOptions = (input, callback) => {
@@ -85,7 +85,6 @@ const TestDetails = () => {
                             <thead>
                             <tr className="table-success">
                                 <th scope="col">Package</th>
-                                <th scope="col">Test</th>
                                 <th scope="col">Amount</th>
                                 <th scope="col">Action</th>
 
@@ -97,7 +96,6 @@ const TestDetails = () => {
                                     return (
                                         <tr key={i}>
                                             <td scope="row">{test.test_code}</td>
-                                            <td>{test.test_name}</td>
                                             <td>{test.test_amount}</td>
                                             <td><button className="btn_test btn btn-danger" onClick={(e) => {
                                                 e.preventDefault()
@@ -128,12 +126,21 @@ const TestDetails = () => {
                             <tbody>
                             {!isTestFindByNameLoading && selectedTestList.size !== 0 ?
                                 selectedTestList.map((test,i) => {
-                                    return (
-                                        <tr key={i}>
-                                            <td scope="row">{test.test_code}</td>
-                                            <td>{test.test_name}</td>
-                                        </tr>
+                                    return(
+                                        <>
+                                            {test.test_names.map((testName, k) => {
+                                                return (
+                                                    <tr key={i+k}>
+                                                        <td scope="row">{test.test_code}</td>
+                                                        <td>{testName.test_name}</td>
+                                                    </tr>
+                                                )
+                                            })
+                                            }
+                                        </>
                                     )
+
+
                                 }) :
                                 <tr>
                                     <th scope="row"> No tests selected </th>

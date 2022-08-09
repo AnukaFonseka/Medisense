@@ -94,12 +94,20 @@ CREATE TABLE `country_details`
     UNIQUE KEY `uk_country_details_country_name` (`country_name`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `test_package`
+(
+    `id` bigint(20) NOT NULL AUTO_INCREMENT,
+    `test_code` VARCHAR(250) NOT NULL ,
+    `test_amount` INT(20),
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `uk_test_package_test_code` (`test_code`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE `test_details`
 (
     `id` bigint(20) NOT NULL AUTO_INCREMENT,
     `test_code` VARCHAR(250) NOT NULL ,
     `test_name` VARCHAR(50) NOT NULL ,
-    `test_amount` INT(20),
     PRIMARY KEY (`id`),
     UNIQUE KEY `uk_test_details_test_name` (`test_name`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

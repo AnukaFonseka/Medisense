@@ -7,7 +7,7 @@ const initialState = {
     TestsByNameList: [],
     isTestFindByNameLoading: false,
     selectedTest: {
-        test_name: "",
+        test_names: [],
         test_code: "",
         test_amount:"",
     },
