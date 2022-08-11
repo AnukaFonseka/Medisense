@@ -128,15 +128,15 @@ const TestDetails = () => {
                                 selectedTestList.map((test,i) => {
                                     return(
                                         <>
-                                            {test.test_names.map((testName, k) => {
-                                                return (
-                                                    <tr key={i+k}>
-                                                        <td scope="row">{test.test_code}</td>
-                                                        <td>{testName.test_name}</td>
-                                                    </tr>
-                                                )
-                                            })
-                                            }
+                                            {/*{test.test_names.map((testName, k) => {*/}
+                                            {/*    return (*/}
+                                            {/*        <tr key={i+k}>*/}
+                                            {/*            <td scope="row">{test.test_code}</td>*/}
+                                            {/*            <td>{testName.test_name}</td>*/}
+                                            {/*        </tr>*/}
+                                            {/*    )*/}
+                                            {/*})*/}
+                                            {/*}*/}
                                         </>
                                     )
 

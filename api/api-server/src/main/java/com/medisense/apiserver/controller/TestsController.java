@@ -1,5 +1,6 @@
 package com.medisense.apiserver.controller;
 import com.medisense.apiserver.entities.HttpResult;
+import com.medisense.apiserver.entities.Test;
 import com.medisense.apiserver.entities.TestDetails;
 import com.medisense.apiserver.entities.TestPackage;
 import com.medisense.apiserver.service.TestsService;
@@ -23,15 +24,15 @@ public class TestsController {
 
     @PostMapping(path = "addTest", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public HttpResult saveAgencyToDb(@RequestBody TestDetails test) {
+    public HttpResult saveTestToDb(@RequestBody Test test) {
         logger.info("Create Test request recieved [{}]", test);
         return testsService.saveTestToDb(test);
     }
 
     @GetMapping(path = "getTests")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public List<TestDetails> getAgenciesByName(@RequestParam String testName) {
-        logger.info("Find Tests by name request recieved [{}]", testName);
-        return testsService.getTestByTestName(testName);
+    public List<Test> getTestsByCode(@RequestParam String testCode) {
+        logger.info("Find Tests by code request recieved [{}]", testCode);
+        return testsService.getTestByTestCode(testCode);
     }
 }

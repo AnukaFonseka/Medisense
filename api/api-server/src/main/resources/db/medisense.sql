@@ -108,8 +108,19 @@ CREATE TABLE `test_details`
     `id` bigint(20) NOT NULL AUTO_INCREMENT,
     `test_code` VARCHAR(250) NOT NULL ,
     `test_name` VARCHAR(50) NOT NULL ,
+    `test_amount` VARCHAR(50) NOT NULL ,
     PRIMARY KEY (`id`),
     UNIQUE KEY `uk_test_details_test_name` (`test_name`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- CREATE TABLE `customer_tests`
+-- (
+--     `id` bigint(20) NOT NULL AUTO_INCREMENT,
+--     `cus_ref_no` bigint(20) NOT NULL,
+--     `customer_full_name` VARCHAR(250) NOT NULL,
+--     `test_code` VARCHAR(250) NOT NULL ,
+--     `test_amount` INT(20),
+--     PRIMARY KEY (`id`),
+-- )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `user_roles` (`user_id`, `role_id`) values (1, 4);

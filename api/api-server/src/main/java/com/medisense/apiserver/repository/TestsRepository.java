@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface TestsRepository extends CrudRepository<Test, Integer> {
     @Query("SELECT test FROM Test test WHERE test.test_code LIKE CONCAT('%',:name,'%')")
-    public List<Test> getTestByTestPackage(@Param("name") String name);
+    public List<Test> getTestByTestCode(@Param("name") String name);
 }

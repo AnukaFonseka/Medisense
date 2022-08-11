@@ -14,6 +14,8 @@ public class Test {
 
     private String test_name;
 
+    private String test_amount;
+
     public Integer getId() {
         return id;
     }
@@ -36,6 +38,14 @@ public class Test {
 
     public void setTest_name(String test_name) {
         this.test_name = test_name;
+    }
+
+    public String getTest_amount() {
+        return test_amount;
+    }
+
+    public void setTest_amount(String test_amount) {
+        this.test_amount = test_amount;
     }
 
     @Override
