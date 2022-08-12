@@ -46,6 +46,15 @@ const GCC = () => {
         customer_dob: Yup.date()
             .max(new Date(), 'Please choose a valid date of birth')
             .required('Date of birth is required'),
+        customer_passport_no: Yup.number()
+            .required('Passport No is required'),
+        customer_pp_issued_date: Yup.date()
+            .required('Passport issued date is required'),
+        customer_agency: Yup.string
+            .required('Agency is required'),
+        // customer_country: Yup.string
+        //     .required('Country is required'),
+
             // .test("DOB", "Please choose a valid date of birth", (value) => {
             //     return moment().diff(moment(value), "day") >= 0;
             // })
@@ -181,12 +190,15 @@ const GCC = () => {
                                         <div className="row">
                                             <div className="col">
                                                 <label htmlFor="passport">Passport</label>
-                                                <Field className="form-control" type="text" id="passport"
+                                                <Field className="form-control" type="text" id="customer_passport_no"
                                                        name="customer_passport_no"/>
+                                                {errors.customer_passport_no && touched.customer_passport_no ? (
+                                                    <div className="error_message">{errors.customer_passport_no}</div>
+                                                ) : null}
                                             </div>
                                             <div className="col">
                                                 <label htmlFor="issuedDate">Issued Date</label>
-                                                <Field className="form-control" type="date" id="date"
+                                                <Field className="form-control" type="date" id="customer_pp_issued_date"
                                                        name="customer_pp_issued_date"/>
                                                 {errors.customer_pp_issued_date && touched.customer_pp_issued_date ? (
                                                     <div className="error_message">{errors.customer_pp_issued_date}</div>
@@ -207,6 +219,9 @@ const GCC = () => {
                                                            name="customer_agency" />
                                                     <NavLink to="/addAgency"
                                                              className="btn__agency btn btn-secondary ">Add</NavLink>
+                                                    {errors.customer_agency && touched.customer_agency ? (
+                                                        <div className="error_message">{errors.customer_agency}</div>
+                                                    ) : null}
                                                 </div>
 
                                             </div>
@@ -226,6 +241,9 @@ const GCC = () => {
                                                            name="customer_country" />
                                                     <NavLink to="/addCountry"
                                                              className="btn__agency btn btn-secondary ">Add</NavLink>
+                                                    {errors.customer_country && touched.customer_country ? (
+                                                        <div className="error_message">{errors.customer_country}</div>
+                                                    ) : null}
                                                 </div>
                                             </div>
                                         </div>
