@@ -50,7 +50,7 @@ const GCC = () => {
             .required('Passport No is required'),
         customer_pp_issued_date: Yup.date()
             .required('Passport issued date is required'),
-        customer_agency: Yup.string
+        customer_agency: Yup.string()
             .required('Agency is required'),
         // customer_country: Yup.string
         //     .required('Country is required'),
