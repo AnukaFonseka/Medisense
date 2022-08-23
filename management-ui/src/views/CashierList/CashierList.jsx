@@ -3,6 +3,9 @@ import "./cashierList.css";
 import {NavLink} from "react-router-dom";
 
 const CashierList = () => {
+
+
+
     return(
 
         <div className="main__container">

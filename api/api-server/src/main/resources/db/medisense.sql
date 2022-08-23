@@ -113,6 +113,17 @@ CREATE TABLE `test_details`
     UNIQUE KEY `uk_test_details_test_name` (`test_name`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `cashier_list`
+(
+    `id` bigint(20) NOT NULL AUTO_INCREMENT,
+    `cus_ref_no` bigint(20) NOT NULL,
+    `cus_name` VARCHAR(250) NOT NULL ,
+    PRIMARY KEY (`id`),
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+--
 -- CREATE TABLE `customer_tests`
 -- (
 --     `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -124,3 +135,7 @@ CREATE TABLE `test_details`
 -- )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `user_roles` (`user_id`, `role_id`) values (1, 4);
+
+
+
+

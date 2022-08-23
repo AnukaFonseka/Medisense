@@ -120,8 +120,6 @@ export const addTestThunk = createAsyncThunk('test/createTest', async (payload) 
     }).then((res) => res.json()).then((res) => res)
 })
 
-
-
 export const addCountryThunk = createAsyncThunk('country/createCountry', async (payload) => {
     return await fetch('http://127.0.0.1:8082/countries/addCountry', {
         method: 'POST',
@@ -136,6 +134,15 @@ export const addCountryThunk = createAsyncThunk('country/createCountry', async (
 export const findCountryByNameThunk = createAsyncThunk('country/findCountryByName', async (payload) => {
     const {countryName} = payload
     return await fetch(`http://127.0.0.1:8082/countries/getCountries?countryName=${countryName}`, {
+        method: 'GET',
+        headers: new Headers({
+            'Authorization': 'Bearer '+ localStorage.getItem("login_token"),
+        }),
+    }).then((res) => res.json()).then((res) => res)
+})
+
+export const getCashierListThunk = createAsyncThunk('cashierList/getCashierList', async (payload) => {
+    return await fetch(`http://127.0.0.1:8082/cashierList/getCashierList`, {
         method: 'GET',
         headers: new Headers({
             'Authorization': 'Bearer '+ localStorage.getItem("login_token"),
