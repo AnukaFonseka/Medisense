@@ -7,6 +7,7 @@ import testReducer from '../views/AddTest/index'
 import {connectRouter, routerMiddleware} from "connected-react-router";
 import {history} from "../router/router";
 import countryReducer from '../views/AddCountry/index'
+import cashierReducer from '../views/CashierList/index'
 
 const rootReducer = (history) => combineReducers({
     router: connectRouter(history),
@@ -15,7 +16,9 @@ const rootReducer = (history) => combineReducers({
     agency: agencyReducer,
     job: jobReducer,
     test: testReducer,
-    country: countryReducer
+    country: countryReducer,
+    cashier: cashierReducer
+
 })
 
 const preloadedState = {};

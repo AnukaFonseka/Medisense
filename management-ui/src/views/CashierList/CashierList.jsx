@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./cashierList.css";
 import {NavLink} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {getCashierListThunk} from "../../apiCalls/apiCalls";
+
 
 const CashierList = () => {
-
-
 
     return(
 
