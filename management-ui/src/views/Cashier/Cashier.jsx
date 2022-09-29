@@ -1,8 +1,15 @@
 import React from "react";
 import "./cashier.css"
 import {NavLink} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {cashierSelector} from "../CashierList";
+import {Field, Formik} from "formik";
 
 const Cashier = () => {
+    const {selectedCustomer} = useSelector(cashierSelector)
+
+    console.log(selectedCustomer)
+
     return(
         <div className="main--container">
             <form className="formm">
@@ -11,20 +18,23 @@ const Cashier = () => {
                 </div>
                 <br/>
 
+                <Formik initialValues={selectedCustomer}>
                 <div className="common__info">
                     <div className="common__info__wrap">
                         <div className="common__info__details">
                             <div className="row">
                                 <div className="col">
-                                    <label htmlFor="name">Name</label>
-                                    <input className="form-control" type="text" id="name" name="name"/>
+                                    <label htmlFor="name">Full Name</label>
+                                    <Field className="form-control" type="text" id="name"
+                                           name="cus_name" readOnly/>
                                 </div>
                             </div>
 
                             <div className="row">
                                 <div className="col">
-                                    <label htmlFor="name">ID</label>
-                                    <input className="form-control" type="text" id="id" name="id"/>
+                                    <label htmlFor="id">ID</label>
+                                    <Field className="form-control" type="text" id="cus_ref_no"
+                                           name="cus_ref_no" readOnly/>
                                 </div>
                             </div>
                         </div>
@@ -35,6 +45,7 @@ const Cashier = () => {
 
                     </div>
                 </div>
+                </Formik>
                 <br/>
 
                 <div className="common__info">

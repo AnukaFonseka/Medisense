@@ -3,9 +3,16 @@ import "./cashierList.css";
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getCashierListThunk} from "../../apiCalls/apiCalls";
+import {cashierSelector, setSelectedCustomer} from "./index";
 
 
 const CashierList = () => {
+    const dispatch = useDispatch()
+    const {waitingList, isGetCashierListLoading} = useSelector(cashierSelector)
+
+    useEffect( () => {
+        dispatch(getCashierListThunk())
+    }, [])
 
     return(
 
@@ -28,30 +35,26 @@ const CashierList = () => {
                     </thead>
 
                     <tbody>
-                            <tr>
-                                <td> Reyna </td>
-                                <td> 001 </td>
-                                <td style={{display:'flex', justifyContent: "center"}}>
-                                    <NavLink to = "/cashier" className = "btn btn-primary mb-2" style={{marginLeft: "20px"}} > View </NavLink>
-                                </td>
-                            </tr>
 
-                            <tr>
-                                <td> Yoru </td>
-                                <td> 002 </td>
-                                <td style={{display:'flex', justifyContent: "center"}}>
-                                    <NavLink to = "/cashier" className = "btn btn-primary mb-2" style={{marginLeft: "20px"}} > View </NavLink>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td> Raze </td>
-                                <td> 003 </td>
-                                <td style={{display:'flex', justifyContent: "center"}}>
-                                    <NavLink to = "/cashier" className = "btn btn-primary mb-2" style={{marginLeft: "20px"}} > View </NavLink>
-                                </td>
-                            </tr>
-
+                    {
+                        !isGetCashierListLoading ?
+                            waitingList.map((user, i) => {
+                                return (
+                                    <tr key={i}>
+                                        <td> {user.cus_name} </td>
+                                        <td>{user.cus_ref_no}</td>
+                                        <td style={{display:'flex', justifyContent: "center"}}>
+                                            <NavLink to = "/cashier" className = "btn btn-primary mb-2" style={{marginLeft: "20px"}} onClick={() => dispatch(setSelectedCustomer(user))}>
+                                                View
+                                            </NavLink>
+                                        </td>
+                                    </tr>
+                                )
+                            }) :
+                            <>
+                                Loading .....
+                            </>
+                    }
                     </tbody>
                 </table>
             </div>

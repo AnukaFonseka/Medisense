@@ -5,7 +5,11 @@ import {getCashierListThunk} from "../../apiCalls/apiCalls";
 
 const initialState = {
     waitingList: [],
-    isGetCashierListLoading: false
+    isGetCashierListLoading: false,
+    selectedCustomer: {
+        cus_ref_no: "",
+        customer_full_name: ""
+    }
 }
 
 export const cashierSlice = createSlice({
@@ -18,9 +22,14 @@ export const cashierSlice = createSlice({
     },
 
     extraReducers(builder) {
+        builder.addCase(getCashierListThunk.pending, (state,action) => {
+            state.isGetCashierListLoading = true
+        })
         builder.addCase(getCashierListThunk.fulfilled, (state,action) => {
+            state.isGetCashierListLoading = false
             state.waitingList = action.payload
         })
+
     }
 
 })
