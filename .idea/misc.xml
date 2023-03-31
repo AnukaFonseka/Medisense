@@ -3,7 +3,7 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/api/api-server/pom.xml" />
+        <option value="$PROJECT_DIR$/api-server/pom.xml" />
       </list>
     </option>
   </component>
