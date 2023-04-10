@@ -21,6 +21,7 @@ import 'react-notifications/lib/notifications.css';
 import {NotificationContainer} from "react-notifications";
 import AddTest from "./AddTest/AddTest"
 import AddCountry from "./AddCountry/AddCountry";
+import CreatePackage from "./CreatePackage/createPackage";
 
 
 
@@ -48,6 +49,7 @@ function App() {
                     <Route exact path="/labValues" component={LabValues}></Route>
                     <Route exact path="/addTest" component={AddTest}></Route>
                     <Route exact path="/addCountry" component={AddCountry}></Route>
+                    <Route exact path="/createPackage" component={CreatePackage}></Route>
                     <Redirect exact to="/login" from="/"/>
                 </Switch>
             </ConnectedRouter>
